@@ -62,7 +62,16 @@ function useInViewOnce(margin = "-80px") {
   const inView = useInView(ref, { once: true, margin });
   return { ref, inView };
 }
-
+function useMobile() {
+  const [mobile, setMobile] = useState(false);
+  useEffect(() => {
+    const check = () => setMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+  return mobile;
+}
 /* ════════════════════════════════════════════
    HEADER
 ════════════════════════════════════════════ */
@@ -204,18 +213,66 @@ function SiteHeader() {
    HERO
 ════════════════════════════════════════════ */
 function HeroSection() {
+  const isMobile = useMobile();
   const sectionRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start start", "end start"],
   });
 
-  // Фото дрейфует вверх медленнее скролла — классический параллакс
-  const photoY = useTransform(scrollYProgress, [0, 1], [0, -160]);
-  // Текст уходит быстрее и плавно гаснет
-  const textY = useTransform(scrollYProgress, [0, 1], [0, -80]);
-  const textOpacity = useTransform(scrollYProgress, [0, 0.55], [1, 0]);
+  const photoY = useTransform(scrollYProgress, [0, 1], [0, isMobile ? -70 : -160]);
+  const textY = useTransform(scrollYProgress, [0, 1], [0, isMobile ? -35 : -80]);
+  const textOpacity = useTransform(scrollYProgress, [0, 0.55], [1, isMobile ? 1 : 0]);
 
+  /* ── MOBILE ── */
+  if (isMobile) {
+    return (
+      <section ref={sectionRef} className="bg-white overflow-hidden relative" style={{ height: 500 }}>
+        {/* Centred portrait — sits at the bottom, parallax applied */}
+        <motion.div
+          className="absolute bottom-0 left-1/2 -translate-x-1/2"
+          style={{ width: 380, height: 480, y: photoY, willChange: "transform" }}
+          initial={{ scale: 1.06, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <img src={imgHero} alt="Кира Юхтенко" className="w-full h-full object-cover object-top" />
+        </motion.div>
+
+        {/* Gradient 1 — plain fade */}
+        <div className="absolute inset-x-0 bottom-0 h-[220px] bg-gradient-to-b from-transparent to-white pointer-events-none" />
+        {/* Gradient 2 — backdrop-blur fade (matches Figma FirstScreen) */}
+        <div
+          className="absolute inset-x-0 bottom-0 h-[200px] bg-gradient-to-b from-transparent to-white pointer-events-none"
+          style={{
+            backdropFilter: "blur(8px)",
+            WebkitBackdropFilter: "blur(8px)",
+            maskImage: "linear-gradient(to top, white 45%, transparent 100%)",
+            WebkitMaskImage: "linear-gradient(to top, white 45%, transparent 100%)",
+          }}
+        />
+
+        {/* Text */}
+        <motion.div
+          className="absolute bottom-5 left-5"
+          style={{ y: textY }}
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.7, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <p className="text-[18px] leading-[1.3]" style={{ fontFamily: F, fontWeight: 500, color: "#111" }}>
+            <span style={{ color: "#7430f7" }}>Кира Юхтенко</span>{" — амбассадор"}
+          </p>
+          <p className="text-[18px] leading-[1.3]" style={{ fontFamily: F, fontWeight: 500, color: "#111" }}>
+            культуры частных инвестиций
+          </p>
+          <p className="text-[18px] leading-[1.3]" style={{ fontFamily: F, fontWeight: 500, color: "#111" }}>
+            в России с 2015 года
+          </p>
+        </motion.div>
+      </section>
+    );
+  }
   return (
     <section ref={sectionRef} className="bg-white overflow-hidden relative" style={{ minHeight: 675 }}>
       {/* Photo — медленный параллакс слой. Контейнер значительно выходит за пределы секции снизу — при скролле обрезка не видна */}
@@ -303,7 +360,7 @@ function AboutSection() {
           <div className="hidden md:block shrink-0 w-[calc(8.33%+102px)]" />
           {/* Photo */}
           <motion.div
-            className="rounded-[12px] overflow-hidden shrink-0 w-full md:w-[304px] md:h-[350px] h-[280px]"
+            className="rounded-[12px] overflow-hidden shrink-0 w-full md:w-[304px] md:h-[400px] h-[360px]"
             initial={{ opacity: 0, x: -40 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
@@ -313,7 +370,7 @@ function AboutSection() {
 
           {/* Bio */}
           <motion.div
-            className="flex flex-col gap-10 md:w-[304px] md:pt-[0px] mt-8 md:mt-0"
+            className="flex flex-col gap-10 md:w-[304px] md:pt-[44px] mt-8 md:mt-0"
             initial={{ opacity: 0, x: 40 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
@@ -661,7 +718,7 @@ function AudienceSection() {
 
   return (
     <section id="audience" className="bg-[#f7f7f7] pt-20 pb-16 overflow-hidden" ref={ref}>
-      <div className="max-w-[1200px] mx-auto px-[226px]">
+      <div className="px-6 lg:px-[226px]">
         <motion.p
           className="text-[28px] leading-[1.25] text-[#111] mb-10"
           style={{ fontFamily: F, fontWeight: 600 }}
@@ -928,7 +985,7 @@ function AwardsSection() {
 
   return (
     <section id="awards" className="bg-[#f7f7f7] pt-10 pb-16 overflow-x-clip" ref={ref}>
-      <div className="max-w-[1200px] mx-auto px-[226px]">
+      <div className="px-6 lg:px-[226px]">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -959,10 +1016,10 @@ function AwardsSection() {
           </motion.div>
         </div>
 
-        <div className="grid lg:grid-cols-[292px_1fr] gap-10 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-[292px_1fr] gap-10 items-start">
 
           {/* ── Left: single-column media cards ── */}
-          <div className="flex flex-col gap-3 sticky top-24 self-start">
+          <div className="flex flex-col gap-3 lg:sticky lg:top-24 lg:self-start">
             {mediaCards.map((card, i) => (
               <motion.div
                 key={i}
@@ -1096,7 +1153,7 @@ function ExperienceSection() {
 
   return (
     <section id="experience" className="bg-white py-16 overflow-hidden" ref={ref}>
-      <div className="max-w-[1200px] mx-auto px-[150px]">
+      <div className="px-6 lg:px-[150px]">
         <motion.p
           className="text-[28px] leading-[1.15] text-[#111] text-center mb-14"
           style={{ fontFamily: F, fontWeight: 600 }}
@@ -1205,15 +1262,44 @@ function ExperienceSection() {
 
         </div>
 
-        {/* Filter row: label left, tabs right */}
-        <div className="flex items-center justify-between gap-4 mb-6">
-          <p className="text-[#6c7179] text-[14px] shrink-0" style={{ fontFamily: F, fontWeight: 500 }}>Архив выступлений</p>
-          <div className="flex gap-2 flex-wrap justify-end">
+        {/* Filter row */}
+        <div className="mb-6">
+          <p className="text-[#6c7179] text-[14px] mb-3" style={{ fontFamily: F, fontWeight: 500 }}>Архив выступлений</p>
+
+          {/* ── Встраиваем CSS прямо сюда для управления скроллом ── */}
+          <style>{`
+            /* Элегантный тонкий скроллбар (как на iOS) */
+            .ios-scroll::-webkit-scrollbar {
+              height: 4px; /* Толщина ползунка */
+            }
+            .ios-scroll::-webkit-scrollbar-track {
+              background: transparent; /* Прозрачный фон под ползунком */
+            }
+            .ios-scroll::-webkit-scrollbar-thumb {
+              background-color: #E5E7EB; /* Светло-серый цвет ползунка */
+              border-radius: 10px; /* Скругления */
+            }
+            .ios-scroll::-webkit-scrollbar-thumb:hover {
+              background-color: #D1D5DB; /* Чуть темнеет при наведении */
+            }
+
+            /* Класс-невидимка (если решишь спрятать ползунок вообще) */
+            .hide-scroll::-webkit-scrollbar {
+              display: none;
+            }
+            .hide-scroll {
+              -ms-overflow-style: none;
+              scrollbar-width: none;
+            }
+          `}</style>
+
+          {/* Возвращаем горизонтальный скролл и добавляем наш класс ios-scroll */}
+          <div className="flex gap-2 overflow-x-auto pb-2 ios-scroll" style={{ WebkitOverflowScrolling: "touch" }}>
             {filterTabs.map((tab) => (
               <motion.button
                 key={tab}
                 onClick={() => setActive(tab)}
-                className={`px-4 py-2.5 rounded-[8px] text-[14px] transition-all duration-200 ${active === tab ? "bg-[#7430f7] text-white" : "bg-[#f7f7f7] text-[#111] hover:bg-[#eee]"}`}
+                className={`px-4 py-2.5 rounded-[8px] text-[14px] transition-all duration-200 whitespace-nowrap ${active === tab ? "bg-[#7430f7] text-white" : "bg-[#f7f7f7] text-[#111] hover:bg-[#eee]"}`}
                 style={{ fontFamily: F, fontWeight: 400 }}
                 whileHover={{ scale: 1.04 }}
                 whileTap={{ scale: 0.96 }}
@@ -1333,8 +1419,8 @@ function TopicsSection() {
 
   return (
     <section id="topics" className="bg-[#f7f7f7] pt-20 pb-16 overflow-hidden" ref={ref}>
-      <div className="max-w-[1200px] mx-auto px-[226px]">
-        <div className="grid lg:grid-cols-2 gap-10">
+      <div className="max-w-[1200px] mx-auto px-6 lg:px-[226px]">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
           {/* Left */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -1412,16 +1498,46 @@ function TopicsSection() {
 /* ════════════════════════════════════════════
    CTA / CONTACT
 ════════════════════════════════════════════ */
+/* shared social links block */
+function ContactSocials() {
+  return (
+    <div className="flex flex-col gap-[10px]">
+      <a href="https://investfuture.ru" target="_blank" rel="noopener noreferrer"
+        className="flex items-center gap-[6px] hover:opacity-60 transition-opacity duration-150">
+        <svg className="w-4 h-4 shrink-0" fill="none" viewBox="0 0 16 16">
+          <g><path clipRule="evenodd" d={svgPaths.p353cb300} fill="#111" fillRule="evenodd" /></g>
+        </svg>
+        <span style={{ fontSize: 12, fontWeight: 400, fontFamily: F, lineHeight: 1.4, whiteSpace: "nowrap", color: "#111" }}>investfuture.ru</span>
+      </a>
+      <a href="https://youtube.com/@InvestFuture" target="_blank" rel="noopener noreferrer"
+        className="flex items-center gap-[6px] hover:opacity-60 transition-opacity duration-150">
+        <svg className="w-4 h-4 shrink-0" fill="none" viewBox="0 0 16 11.2531">
+          <path d={svgPaths.p30e21700} fill="#111" />
+        </svg>
+        <span style={{ fontSize: 12, fontWeight: 400, fontFamily: F, lineHeight: 1.4, whiteSpace: "nowrap", color: "#111" }}>InvestFuture</span>
+      </a>
+      <a href="https://linkedin.com/in/kira-yukhtenko" target="_blank" rel="noopener noreferrer"
+        className="flex items-center gap-[6px] hover:opacity-60 transition-opacity duration-150">
+        <svg className="w-4 h-4 shrink-0" fill="none" viewBox="0 0 16 16">
+          <path d={svgPaths.p324e5e00} fill="#111" />
+        </svg>
+        <span style={{ fontSize: 12, fontWeight: 400, fontFamily: F, lineHeight: 1.4, whiteSpace: "nowrap", color: "#111" }}>LinkedIn</span>
+      </a>
+    </div>
+  );
+}
+
 function CTASection() {
   const { ref, inView } = useInViewOnce();
 
   return (
-    <section id="contact" className="bg-white pt-14 pb-16 overflow-hidden" ref={ref}>
-      <div className="max-w-[1200px] mx-auto px-[150px]">
+    <section id="contact" className="bg-white pt-12 pb-14 overflow-hidden" ref={ref}>
+      <div className="max-w-[1200px] mx-auto px-6 lg:px-[150px]">
+
         {/* Header row */}
-        <div className="flex items-start gap-[120px] mb-10">
+        <div className="flex flex-col md:flex-row md:items-start md:gap-[120px] gap-2 mb-8 lg:mb-10">
           <motion.p
-            className="text-[#6c7179] text-[14px] shrink-0 pt-[6px]"
+            className="text-[#6c7179] text-[14px] shrink-0 md:pt-[6px]"
             style={{ fontFamily: F, fontWeight: 500 }}
             initial={{ opacity: 0, y: 16 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -1430,7 +1546,7 @@ function CTASection() {
             Контакты
           </motion.p>
           <motion.p
-            className="text-[28px] leading-[1.25] text-[#111]"
+            className="text-[22px] md:text-[28px] leading-[1.25] text-[#111]"
             style={{ fontFamily: F, fontWeight: 600 }}
             initial={{ opacity: 0, y: 16 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -1442,62 +1558,94 @@ function CTASection() {
 
         {/* Card */}
         <motion.div
-          className="bg-[#f7f7f7] rounded-[16px] relative w-full"
-          style={{ height: 350 }}
+          className="bg-[#f7f7f7] rounded-[16px] w-full overflow-hidden"
           initial={{ opacity: 0, y: 28 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.1 }}
         >
-          <div className="absolute rounded-[8px] overflow-hidden" style={{ width: 36, height: 36, top: 20, left: 20, background: "#7430f7" }}>
-            <img src={imgImage143} alt="Кира Юхтенко" className="w-full h-full object-cover pointer-events-none" />
+          {/* ── Mobile layout ── */}
+          <div className="flex flex-col gap-5 p-5 md:hidden">
+            {/* Avatar + name */}
+            <div className="flex items-center gap-3">
+              <div className="rounded-[8px] overflow-hidden shrink-0" style={{ width: 36, height: 36, background: "#7430f7" }}>
+                <img src={imgImage143} alt="Кира Юхтенко" className="w-full h-full object-cover" />
+              </div>
+              <p className="text-[#111] text-[14px]" style={{ fontFamily: F, fontWeight: 600 }}>Кира Юхтенко</p>
+            </div>
+            {/* Title */}
+            <div>
+              <p style={{ fontSize: 18, fontWeight: 600, fontFamily: F, lineHeight: 1.2, color: "#111" }}>
+                Готовы обсудить предстоящее событие?
+              </p>
+              <p className="text-[#6c7179] mt-1.5" style={{ fontSize: 13, fontWeight: 500, fontFamily: F, lineHeight: 1.4 }}>
+                Ответим в рабочее время в течение 1 часа
+              </p>
+            </div>
+            {/* Socials */}
+            <ContactSocials />
+            {/* Divider */}
+            <div className="bg-[#e0e0e0] h-px w-full" />
+            {/* Telegram */}
+            <div>
+              <p className="text-[#6c7179] mb-3" style={{ fontSize: 13, fontWeight: 500, fontFamily: F, lineHeight: 1.4 }}>
+                Напишите нам напрямую в Telegram:
+              </p>
+              <motion.a
+                href="https://t.me/IF_adv" target="_blank" rel="noopener noreferrer"
+                className="inline-flex items-center gap-[6px] bg-[#111] text-white rounded-[8px] px-8 py-2.5"
+                whileHover={{ scale: 1.03, backgroundColor: "#333" }}
+                whileTap={{ scale: 0.97 }}
+                transition={{ duration: 0.15 }}
+              >
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path clipRule="evenodd" d={svgPaths.p2b2a9d80} fill="white" fillRule="evenodd" />
+                </svg>
+                <span style={{ fontSize: 12, fontWeight: 500, fontFamily: F, lineHeight: 1.4, whiteSpace: "nowrap" }}>@IF_adv</span>
+              </motion.a>
+            </div>
           </div>
 
-          <div className="absolute text-[#111]" style={{ top: 76, left: 20, fontSize: 20, fontWeight: 600, fontFamily: F, lineHeight: 1.15 }}>
-            <p className="mb-0">Готовы обсудить</p>
-            <p>предстоящее событие?</p>
-          </div>
-
-          <div className="absolute text-[#6c7179]" style={{ top: 133, left: 20, fontSize: 14, fontWeight: 500, fontFamily: F, lineHeight: 1.25 }}>
-            <p className="mb-0">Ответим в рабочее время</p>
-            <p>в течение 1 часа</p>
-          </div>
-
-          <div className="absolute flex flex-col gap-[8px]" style={{ top: 140, left: "50.8%" }}>
-            <a href="https://investfuture.ru" target="_blank" className="flex items-center gap-[6px] hover:opacity-60 transition-opacity">
-              <svg className="w-4 h-4 shrink-0" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                {/* Контур окна */}
-                <rect x="1.5" y="2.5" width="13" height="11" rx="1.5" stroke="#111" strokeWidth="1.2" />
-                {/* Линия шапки браузера */}
-                <line x1="1.5" y1="6.5" x2="14.5" y2="6.5" stroke="#111" strokeWidth="1.2" />
-                {/* Три точки */}
-                <circle cx="4" cy="4.5" r="0.6" fill="#111" />
-                <circle cx="6" cy="4.5" r="0.6" fill="#111" />
-                <circle cx="8" cy="4.5" r="0.6" fill="#111" />
+          {/* ── Desktop layout ── */}
+          <div className="hidden md:block relative" style={{ height: 350 }}>
+            {/* Avatar */}
+            <div className="absolute rounded-[8px] overflow-hidden" style={{ width: 36, height: 36, top: 20, left: 20, background: "#7430f7" }}>
+              <img src={imgImage143} alt="Кира Юхтенко" className="w-full h-full object-cover pointer-events-none" />
+            </div>
+            {/* Title */}
+            <div className="absolute text-[#111]" style={{ top: 76, left: 20, fontSize: 20, fontWeight: 600, fontFamily: F, lineHeight: 1.15 }}>
+              <p className="mb-0">Готовы обсудить</p>
+              <p>предстоящее событие?</p>
+            </div>
+            {/* Subtitle */}
+            <div className="absolute text-[#6c7179]" style={{ top: 133, left: 20, fontSize: 14, fontWeight: 500, fontFamily: F, lineHeight: 1.25 }}>
+              <p className="mb-0">Ответим в рабочее время</p>
+              <p>в течение 1 часа</p>
+            </div>
+            {/* Socials */}
+            <div className="absolute" style={{ top: 140, left: "50.8%" }}>
+              <ContactSocials />
+            </div>
+            {/* Telegram label */}
+            <p className="absolute text-[#6c7179]" style={{ top: 268, left: 20, fontSize: 14, fontWeight: 500, fontFamily: F, lineHeight: 1.25, whiteSpace: "nowrap" }}>
+              Напишите нам напрямую в Telegram:
+            </p>
+            {/* Telegram button */}
+            <motion.a
+              href="https://t.me/IF_adv" target="_blank" rel="noopener noreferrer"
+              className="absolute flex items-center gap-[6px] bg-[#111] text-white rounded-[8px]"
+              style={{ top: 294, left: 20, paddingLeft: 48, paddingRight: 48, paddingTop: 10, paddingBottom: 10 }}
+              whileHover={{ scale: 1.03, backgroundColor: "#333" }}
+              whileTap={{ scale: 0.97 }}
+              transition={{ duration: 0.15 }}
+            >
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path clipRule="evenodd" d={svgPaths.p2b2a9d80} fill="white" fillRule="evenodd" />
               </svg>
-              <span style={{ fontSize: 12, fontWeight: 400, fontFamily: F, color: "#111" }}>investfuture.ru</span>
-            </a>
-            <a href="https://youtube.com/@InvestFuture" target="_blank" className="flex items-center gap-[6px] hover:opacity-60 transition-opacity">
-              <svg className="w-4 h-4 shrink-0" fill="none" viewBox="0 0 16 11"><path d={svgPaths.p30e21700} fill="#111" /></svg>
-              <span style={{ fontSize: 12, fontWeight: 400, fontFamily: F, color: "#111" }}>InvestFuture</span>
-            </a>
-            <a href="https://linkedin.com/in/kira-yukhtenko" target="_blank" className="flex items-center gap-[6px] hover:opacity-60 transition-opacity">
-              <svg className="w-4 h-4 shrink-0" fill="none" viewBox="0 0 16 16"><path d={svgPaths.p324e5e00} fill="#111" /></svg>
-              <span style={{ fontSize: 12, fontWeight: 400, fontFamily: F, color: "#111" }}>LinkedIn</span>
-            </a>
+              <span style={{ fontSize: 12, fontWeight: 500, fontFamily: F, lineHeight: 1.4, whiteSpace: "nowrap" }}>@IF_adv</span>
+            </motion.a>
           </div>
-
-          <p className="absolute text-[#6c7179]" style={{ top: 268, left: 20, fontSize: 14, fontWeight: 500, fontFamily: F }}>Напишите нам напрямую в Telegram:</p>
-
-          <motion.a
-            href="https://t.me/IF_adv" target="_blank"
-            className="absolute flex items-center gap-[6px] bg-[#111] text-white rounded-[8px]"
-            style={{ top: 294, left: 20, padding: "10px 48px" }}
-            whileHover={{ scale: 1.03, backgroundColor: "#333" }}
-          >
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d={svgPaths.p2b2a9d80} fill="white" /></svg>
-            <span style={{ fontSize: 12, fontWeight: 500, fontFamily: F }}>@IF_adv</span>
-          </motion.a>
         </motion.div>
+
       </div>
     </section>
   );
@@ -1505,18 +1653,8 @@ function CTASection() {
 
 function SiteFooter() {
   const { ref, inView } = useInViewOnce("-20px");
-
-  const navLinks = [
-    { label: "О спикере", href: "#about" },
-    { label: "Аудитория", href: "#audience" },
-    { label: "Награды", href: "#awards" },
-    { label: "Выступления", href: "#topics" },
-    { label: "Контакт", href: "#contact" }
-  ];
-
   return (
     <footer className="bg-black relative overflow-hidden" style={{ height: 605 }} ref={ref}>
-      {/* Твой SVG фон */}
       <motion.div
         className="absolute inset-0"
         initial={{ opacity: 0 }}
@@ -1540,25 +1678,6 @@ function SiteFooter() {
           </g>
         </svg>
       </motion.div>
-
-      {/* Твои ссылки (поверх SVG) */}
-      <div className="relative z-10 h-full max-w-[1200px] mx-auto px-[150px] flex flex-col justify-end pb-12">
-        <div className="flex justify-between items-center border-t border-white/10 pt-8">
-          <div className="flex gap-6">
-            {navLinks.map((link, i) => (
-              <a key={i} href={link.href} className="text-white/60 hover:text-white text-[12px] transition-colors" style={{ fontFamily: F, fontWeight: 500 }}>
-                {link.label}
-              </a>
-            ))}
-            <Link to="/animations" className="text-[#7430f7] hover:text-white text-[12px] transition-colors" style={{ fontFamily: F, fontWeight: 500 }}>
-              Анімації ↗
-            </Link>
-          </div>
-          <p className="text-white/40 text-[12px]" style={{ fontFamily: F }}>
-            © {new Date().getFullYear()} Кира Юхтенко
-          </p>
-        </div>
-      </div>
     </footer>
   );
 }
