@@ -874,7 +874,16 @@ const mediaCards = [
         <path clipRule="evenodd" d={svgPaths.p18fd000} fill="white" fillRule="evenodd" />
       </svg>
     ),
-    quote: "Входит в Топ 10 лучших каналов про инвестиции: «Один из самых популярных каналов про инвестиции в русскоязычном сегменте YouTube»",
+    quote: (
+      <div className="flex flex-col gap-[4px]">
+        <span style={{ fontWeight: 600, fontSize: 12, display: 'block' }}>
+          Входит в Топ 10 лучших каналов про инвестиции:
+        </span>
+        <span style={{ fontWeight: 400, fontSize: 12, opacity: 0.9 }}>
+          «Один из самых популярных каналов про инвестиции в русскоязычном сегменте YouTube»
+        </span>
+      </div>
+    )
   },
   {
     img: imgImage109, height: 100,
@@ -942,9 +951,9 @@ function AwardsSection() {
           >
             {[...Array(2)].map((_, rep) => (
               <div key={rep} className="flex gap-8 shrink-0 items-center">
-                <img src={imgImage106} alt="" className="h-[35px] w-auto mix-blend-multiply" />
-                <img src={imgImage106} alt="" className="h-[35px] w-auto mix-blend-multiply opacity-70" />
-                <img src={imgImage106} alt="" className="h-[35px] w-auto mix-blend-multiply opacity-50" />
+                <img src={imgImage106} alt="" className="h-[35px] w-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300" />
+                <img src={imgImage106} alt="" className="h-[35px] w-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300" />
+                <img src={imgImage106} alt="" className="h-[35px] grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300" />
               </div>
             ))}
           </motion.div>
@@ -1455,7 +1464,16 @@ function CTASection() {
 
           <div className="absolute flex flex-col gap-[8px]" style={{ top: 140, left: "50.8%" }}>
             <a href="https://investfuture.ru" target="_blank" className="flex items-center gap-[6px] hover:opacity-60 transition-opacity">
-              <svg className="w-4 h-4 shrink-0" fill="none" viewBox="0 0 16 16"><path d={svgPaths.p353cb300} fill="#111" /></svg>
+              <svg className="w-4 h-4 shrink-0" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                {/* Контур окна */}
+                <rect x="1.5" y="2.5" width="13" height="11" rx="1.5" stroke="#111" strokeWidth="1.2" />
+                {/* Линия шапки браузера */}
+                <line x1="1.5" y1="6.5" x2="14.5" y2="6.5" stroke="#111" strokeWidth="1.2" />
+                {/* Три точки */}
+                <circle cx="4" cy="4.5" r="0.6" fill="#111" />
+                <circle cx="6" cy="4.5" r="0.6" fill="#111" />
+                <circle cx="8" cy="4.5" r="0.6" fill="#111" />
+              </svg>
               <span style={{ fontSize: 12, fontWeight: 400, fontFamily: F, color: "#111" }}>investfuture.ru</span>
             </a>
             <a href="https://youtube.com/@InvestFuture" target="_blank" className="flex items-center gap-[6px] hover:opacity-60 transition-opacity">
@@ -1487,7 +1505,7 @@ function CTASection() {
 
 function SiteFooter() {
   const { ref, inView } = useInViewOnce("-20px");
-  
+
   const navLinks = [
     { label: "О спикере", href: "#about" },
     { label: "Аудитория", href: "#audience" },
@@ -1509,15 +1527,15 @@ function SiteFooter() {
           <rect fill="black" height="605" width="1200" />
           <g>
             <path d={svgFooter.p28a6f500} fill="#111111" />
-            <path d={svgFooter.p121df00}  fill="#111111" />
+            <path d={svgFooter.p121df00} fill="#111111" />
             <path d={svgFooter.p23fe6700} fill="#111111" />
             <path d={svgFooter.p2b4df200} fill="#111111" />
             <path d={svgFooter.p233a2c80} fill="#111111" />
             <path d={svgFooter.p2068b400} fill="#111111" />
-            <path d={svgFooter.p7fe1d30}  fill="#111111" />
+            <path d={svgFooter.p7fe1d30} fill="#111111" />
             <path d={svgFooter.p3b79b000} fill="#111111" />
             <path d={svgFooter.p266e1d80} fill="#111111" />
-            <path d={svgFooter.p6877880}  fill="#111111" />
+            <path d={svgFooter.p6877880} fill="#111111" />
             <path d={svgFooter.p339f5900} fill="#111111" />
           </g>
         </svg>
