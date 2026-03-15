@@ -1,4 +1,4 @@
-import imgImage123 from "figma:asset/55d1bf37236020aa06b954c907de7ca81fd5f6f3.png";
+import experienceEvent14 from "@assets/experience-event-14.webp";
 
 function Frame() {
   return (
@@ -47,7 +47,7 @@ export default function Frame5() {
   return (
     <div className="bg-black overflow-clip relative rounded-[16px] size-full">
       <div className="absolute h-[250px] left-0 top-[-10px] w-[444px]" data-name="image 123">
-        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage123} />
+        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={experienceEvent14} />
       </div>
       <Frame4 />
       <div className="-translate-y-full absolute flex flex-col font-['Manrope:Medium',sans-serif] font-medium justify-end leading-[0] left-[14px] text-[24px] text-white top-[185px] whitespace-nowrap">

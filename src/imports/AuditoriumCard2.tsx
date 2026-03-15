@@ -1,16 +1,16 @@
 import svgPaths from "./svg-szm6mgreqf";
-import imgImage98 from "figma:asset/78a854ca8b673bd6bffdee03116fa51747f88464.png";
-import imgEllipse2 from "figma:asset/a9094b5b1454fa7cb139d1d2ce2da9cc7ec7b785.png";
-import imgEllipse3 from "figma:asset/16a242d07ea158aad5a4b677afda0b108acb113f.png";
-import imgEllipse4 from "figma:asset/236f3f3de5b632e8a62129bf67adb40c4e4c6111.png";
-import imgEllipse5 from "figma:asset/f9aaf6ef14c1160037b4bdd8bfeffca161b401e6.png";
-import imgEllipse6 from "figma:asset/d2f6f983036fe3abf64157b744f2998ec1525b7e.png";
-import imgEllipse7 from "figma:asset/29435a5d799d8885f182f68314a87aa60fe508d5.png";
-import imgEllipse8 from "figma:asset/d8d09274dc641a22c7770d5cc1b46026a8ad1f69.png";
-import imgEllipse9 from "figma:asset/a18dacfe4f3fd1141e047896568b13971eff2519.png";
-import imgEllipse10 from "figma:asset/79e8f0e8b00f9c2918781131da314d33aefddf1f.png";
-import imgImage100 from "figma:asset/9401ac93c056e80fc1080dd21933830e4dcec8fd.png";
-import imgImage97 from "figma:asset/2705dde6df663c0c075c31a30f080c91b84b1389.png";
+import audienceTelegramCard1 from "@assets/audience-telegram-card1.webp";
+import imgEllipse2 from "@assets/audience-avatar-01.webp";
+import imgEllipse3 from "@assets/audience-avatar-02.webp";
+import imgEllipse4 from "@assets/audience-avatar-03.webp";
+import imgEllipse5 from "@assets/audience-avatar-04.webp";
+import imgEllipse6 from "@assets/audience-avatar-05.webp";
+import imgEllipse7 from "@assets/audience-avatar-06.webp";
+import imgEllipse8 from "@assets/audience-avatar-07.webp";
+import imgEllipse9 from "@assets/audience-avatar-08.webp";
+import imgEllipse10 from "@assets/audience-avatar-09.webp";
+import audienceTelegramCard2 from "@assets/audience-telegram-card2.webp";
+import audienceTelegramAvatar from "@assets/audience-telegram-avatar.webp";
 
 function Frame1() {
   return (
@@ -78,8 +78,8 @@ function Frame() {
     <div className="absolute bg-white h-[115px] left-[8px] overflow-clip rounded-[8px] top-[54px] w-[226px]">
       <div className="absolute h-[115px] left-0 top-0 w-[226px]" data-name="image 98">
         <div aria-hidden="true" className="absolute inset-0 pointer-events-none">
-          <img alt="" className="absolute max-w-none object-cover size-full" src={imgImage98} />
-          <img alt="" className="absolute max-w-none object-cover size-full" src={imgImage98} />
+          <img alt="" className="absolute max-w-none object-cover size-full" src={audienceTelegramCard1} />
+          <img alt="" className="absolute max-w-none object-cover size-full" src={audienceTelegramCard1} />
         </div>
       </div>
       <div className="absolute bg-[#111] h-[115px] left-0 top-0 w-[226px]" data-name="image 99" />
@@ -101,7 +101,7 @@ function Frame4() {
     <div className="absolute content-stretch flex flex-col gap-[8px] items-start left-[14px] top-[69px] w-[154px]">
       <p className="font-['Manrope:Medium',sans-serif] font-medium leading-[1.25] min-w-full relative shrink-0 text-[14px] text-white w-[min-content]">70 000+ подписчиков</p>
       <div className="relative rounded-[999px] shrink-0 size-[14px]" data-name="image 97">
-        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[999px] size-full" src={imgImage97} />
+        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[999px] size-full" src={audienceTelegramAvatar} />
       </div>
     </div>
   );
@@ -111,7 +111,7 @@ function Frame2() {
   return (
     <div className="absolute bg-white h-[115px] left-[8px] overflow-clip rounded-[8px] top-[177px] w-[226px]">
       <div className="absolute h-[115px] left-0 top-0 w-[226px]" data-name="image 100">
-        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage100} />
+        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={audienceTelegramCard2} />
       </div>
       <div className="absolute bg-[#111] h-[115px] left-0 top-0 w-[226px]" data-name="image 99" />
       <p className="absolute font-['Manrope:Medium',sans-serif] font-medium leading-[0] left-[14px] text-[14px] text-white top-[14px] whitespace-nowrap">

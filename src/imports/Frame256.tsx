@@ -1,4 +1,4 @@
-import imgImage132 from "figma:asset/e2516fe0b79fd9a601a64729325c106d603a6861.png";
+import experienceEvent07 from "@assets/experience-event-07.webp";
 
 function Frame() {
   return (
@@ -21,7 +21,7 @@ export default function Frame2() {
   return (
     <div className="bg-[#1e1e1e] overflow-clip relative rounded-[16px] size-full">
       <div className="absolute h-[269px] left-[-50px] top-0 w-[543px]" data-name="image 132">
-        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage132} />
+        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={experienceEvent07} />
       </div>
       <div className="absolute bg-gradient-to-b from-[rgba(0,0,0,0.9)] h-[127px] left-0 to-[rgba(0,0,0,0)] top-[-26px] w-[444px]" />
       <div className="absolute flex h-[197px] items-center justify-center left-0 top-[92px] w-[444px]">

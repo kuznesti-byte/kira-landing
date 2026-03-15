@@ -1,6 +1,6 @@
 import svgPaths from "./svg-pw8z5i1jul";
-import imgBCard1 from "figma:asset/ecdc1158f26701610b728d7541c53f122da625f4.png";
-import imgImagePhotoroom21 from "figma:asset/e022bef6cb495e05fdf93aa98c137504b32269d9.png";
+import experienceRadio from "@assets/experience-radio.webp";
+import experienceRecordMic from "@assets/experience-record-mic.webp";
 
 function Group1() {
   return (
@@ -65,12 +65,12 @@ export default function BCard() {
     <div className="overflow-clip relative rounded-[16px] size-full" data-name="b-card 1">
       <div aria-hidden="true" className="absolute inset-0 pointer-events-none rounded-[16px]">
         <div className="absolute bg-[#111] inset-0 rounded-[16px]" />
-        <img alt="" className="absolute max-w-none object-cover rounded-[16px] size-full" src={imgBCard1} />
+        <img alt="" className="absolute max-w-none object-cover rounded-[16px] size-full" src={experienceRadio} />
       </div>
       <div className="absolute flex h-[180px] items-center justify-center right-0 top-0 w-[120px]">
         <div className="-scale-y-100 flex-none rotate-180">
           <div className="h-[180px] relative w-[120px]" data-name="image-Photoroom (2) 1">
-            <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImagePhotoroom21} />
+            <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={experienceRecordMic} />
           </div>
         </div>
       </div>

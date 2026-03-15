@@ -1,40 +1,40 @@
 import svgPaths from "./svg-f4dt87iz4k";
-import imgImagePhotoroom221 from "figma:asset/ab95d2c9ca3963ef5f2d7a12d903e8a1072ff160.png";
-import img2024020420500Resized3 from "figma:asset/90fbbe1b21f76e8751daa3827ad4760aedbb782d.png";
-import imgImage98 from "figma:asset/78a854ca8b673bd6bffdee03116fa51747f88464.png";
-import imgEllipse2 from "figma:asset/a9094b5b1454fa7cb139d1d2ce2da9cc7ec7b785.png";
-import imgEllipse3 from "figma:asset/16a242d07ea158aad5a4b677afda0b108acb113f.png";
-import imgEllipse4 from "figma:asset/236f3f3de5b632e8a62129bf67adb40c4e4c6111.png";
-import imgEllipse5 from "figma:asset/f9aaf6ef14c1160037b4bdd8bfeffca161b401e6.png";
-import imgEllipse6 from "figma:asset/d2f6f983036fe3abf64157b744f2998ec1525b7e.png";
-import imgEllipse7 from "figma:asset/29435a5d799d8885f182f68314a87aa60fe508d5.png";
-import imgEllipse8 from "figma:asset/d8d09274dc641a22c7770d5cc1b46026a8ad1f69.png";
-import imgEllipse9 from "figma:asset/a18dacfe4f3fd1141e047896568b13971eff2519.png";
-import imgEllipse10 from "figma:asset/79e8f0e8b00f9c2918781131da314d33aefddf1f.png";
-import imgImage100 from "figma:asset/9401ac93c056e80fc1080dd21933830e4dcec8fd.png";
-import imgImage97 from "figma:asset/2705dde6df663c0c075c31a30f080c91b84b1389.png";
-import imgImage95 from "figma:asset/7138560695863c7eb11b7f8f71c264d9aadd7f5f.png";
-import imgImg187073 from "figma:asset/dbf6fa0fb6a713db7eff5ecff83a8396acb0f6fa.png";
-import imgEllipse11 from "figma:asset/d1e094fd08773af7d806439e67f0b238563dd5e8.png";
-import imgEllipse12 from "figma:asset/4841261ba8ffd831fb10b9bf20e272d8c80dee0d.png";
-import imgEllipse13 from "figma:asset/1193b13c9b1d2dc3514652b91c4f39fa28155d4e.png";
-import imgEllipse14 from "figma:asset/3d3380ee2c8452f03dfab9773845a8aa2ef08628.png";
-import imgImage106 from "figma:asset/cda90e2fc75b3399bbdbbfba56b5437a7a11de7f.png";
-import imgImage107 from "figma:asset/fb4e490e4450bcbe44bc6704da986dc666dfbf36.png";
-import imgImage108 from "figma:asset/f52a52df61eafa8e6e51ffd29826dad0a4b89b57.png";
-import imgImage109 from "figma:asset/c43aafe62d688779d1bd6afffb8133f829c24f07.png";
-import imgImage122 from "figma:asset/8cc2e89b8de60b0b2a12a5386dfcb414e8a566c4.png";
-import imgImage110 from "figma:asset/fdc7b25fa3322731830556ef5d1e13b2a2499eab.png";
-import imgImage111 from "figma:asset/95c490f951717f48f8593a204a9c566ce1ed97e6.png";
-import imgImagePhotoroom2 from "figma:asset/8828556f281f99adec78855149f841f0d7a1ddf9.png";
-import imgImage128 from "figma:asset/d3d6ed8a5b2a3e05326885d345697f42eae9a721.png";
-import imgImage115 from "figma:asset/c5f9c024420db6ec3eec816ea9b3783b829b1e9f.png";
-import imgImage113 from "figma:asset/6c4c4d41466bb4b11c72491502e9b194ef5d8bdc.png";
-import imgImage129 from "figma:asset/1f12c88da56cb7beafe11d7c55c4094b5211bb47.png";
-import imgImage119 from "figma:asset/ee7675e87ebe03cddf866b1e5bc9be24591363b8.png";
-import imgImage135 from "figma:asset/4a60bed36732c43c3ccbc5f3caf7f39b2f3df051.png";
-import imgImagePhotoroom21 from "figma:asset/e022bef6cb495e05fdf93aa98c137504b32269d9.png";
-import imgImage143 from "figma:asset/522f975b11c1740b97d9cbfacf17366b1ee2b537.png";
+import layoutPhoto from "@assets/layout-photo.webp";
+import aboutPhoto from "@assets/about-photo.webp";
+import audienceTelegramCard1 from "@assets/audience-telegram-card1.webp";
+import imgEllipse2 from "@assets/audience-avatar-01.webp";
+import imgEllipse3 from "@assets/audience-avatar-02.webp";
+import imgEllipse4 from "@assets/audience-avatar-03.webp";
+import imgEllipse5 from "@assets/audience-avatar-04.webp";
+import imgEllipse6 from "@assets/audience-avatar-05.webp";
+import imgEllipse7 from "@assets/audience-avatar-06.webp";
+import imgEllipse8 from "@assets/audience-avatar-07.webp";
+import imgEllipse9 from "@assets/audience-avatar-08.webp";
+import imgEllipse10 from "@assets/audience-avatar-09.webp";
+import audienceTelegramCard2 from "@assets/audience-telegram-card2.webp";
+import audienceTelegramAvatar from "@assets/audience-telegram-avatar.webp";
+import audience from "@assets/audience.webp";
+import audienceYoutubeBadge from "@assets/audience-youtube-badge.webp";
+import imgEllipse11 from "@assets/audience-avatar-10.webp";
+import imgEllipse12 from "@assets/audience-avatar-11.webp";
+import imgEllipse13 from "@assets/audience-avatar-12.webp";
+import imgEllipse14 from "@assets/audience-avatar-13.webp";
+import awardsMarquee from "@assets/awards-marquee.webp";
+import awardsCard1 from "@assets/awards-card1.webp";
+import awardsCard2 from "@assets/awards-card2.webp";
+import awardsCard3 from "@assets/awards-card3.webp";
+import awardsCard4 from "@assets/awards-card4.webp";
+import experienceRbk from "@assets/experience-rbk.webp";
+import experienceBusinessFmBg from "@assets/experience-business-fm-bg.webp";
+import experienceBusinessFm from "@assets/experience-business-fm.webp";
+import experienceEvent01 from "@assets/experience-event-01.webp";
+import experienceEvent04 from "@assets/experience-event-04.webp";
+import experienceEvent03 from "@assets/experience-event-03.webp";
+import experienceEvent05 from "@assets/experience-event-05.webp";
+import experienceEvent02 from "@assets/experience-event-02.webp";
+import experienceEvent06 from "@assets/experience-event-06.webp";
+import experienceRecordMic from "@assets/experience-record-mic.webp";
+import ctaAvatar from "@assets/cta-avatar.webp";
 
 function Component1() {
   return (
@@ -91,7 +91,7 @@ function FirstScreen() {
   return (
     <div className="bg-white h-[675px] overflow-clip relative shrink-0 w-full" data-name="first screen">
       <div className="-translate-x-1/2 absolute bottom-0 left-1/2 size-[620px]" data-name="image-Photoroom (22) 1">
-        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImagePhotoroom221} />
+        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={layoutPhoto} />
       </div>
       <div className="absolute bg-gradient-to-b bottom-0 from-[rgba(255,255,255,0)] h-[244px] left-0 to-white w-[1200px]" />
       <div className="absolute backdrop-blur-[8px] bg-gradient-to-b bottom-0 from-[rgba(255,255,255,0)] h-[229px] left-0 to-white w-[1200px]" />
@@ -112,7 +112,7 @@ function Frame63() {
     <div className="absolute h-[350px] left-[calc(8.33%+126px)] overflow-clip rounded-[12px] top-[274px] w-[304px]">
       <div className="absolute h-[350px] left-0 top-0 w-[304px]" data-name="2024.02.04 Кира Юхтенко20500б_resized 3">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <img alt="" className="absolute h-[108.93%] left-[-0.03%] max-w-none top-[-8.93%] w-[100.05%]" src={img2024020420500Resized3} />
+          <img alt="" className="absolute h-[108.93%] left-[-0.03%] max-w-none top-[-8.93%] w-[100.05%]" src={aboutPhoto} />
         </div>
       </div>
     </div>
@@ -384,8 +384,8 @@ function Frame11() {
     <div className="absolute bg-white h-[115px] left-[8px] overflow-clip rounded-[8px] top-[54px] w-[226px]">
       <div className="absolute h-[115px] left-0 top-0 w-[226px]" data-name="image 98">
         <div aria-hidden="true" className="absolute inset-0 pointer-events-none">
-          <img alt="" className="absolute max-w-none object-cover size-full" src={imgImage98} />
-          <img alt="" className="absolute max-w-none object-cover size-full" src={imgImage98} />
+          <img alt="" className="absolute max-w-none object-cover size-full" src={audienceTelegramCard1} />
+          <img alt="" className="absolute max-w-none object-cover size-full" src={audienceTelegramCard1} />
         </div>
       </div>
       <div className="absolute bg-[#111] h-[115px] left-0 top-0 w-[226px]" data-name="image 99" />
@@ -407,7 +407,7 @@ function Frame15() {
     <div className="absolute content-stretch flex flex-col gap-[8px] items-start left-[14px] top-[69px] w-[154px]">
       <p className="font-['Manrope:Medium',sans-serif] font-medium leading-[1.25] min-w-full relative shrink-0 text-[14px] text-white w-[min-content]">70 000+ подписчиков</p>
       <div className="relative rounded-[999px] shrink-0 size-[14px]" data-name="image 97">
-        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[999px] size-full" src={imgImage97} />
+        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[999px] size-full" src={audienceTelegramAvatar} />
       </div>
     </div>
   );
@@ -417,7 +417,7 @@ function Frame13() {
   return (
     <div className="absolute bg-white h-[115px] left-[8px] overflow-clip rounded-[8px] top-[177px] w-[226px]">
       <div className="absolute h-[115px] left-0 top-0 w-[226px]" data-name="image 100">
-        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage100} />
+        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={audienceTelegramCard2} />
       </div>
       <div className="absolute bg-[#111] h-[115px] left-0 top-0 w-[226px]" data-name="image 99" />
       <p className="absolute font-['Manrope:Medium',sans-serif] font-medium leading-[0] left-[14px] text-[14px] text-white top-[14px] whitespace-nowrap">
@@ -514,12 +514,12 @@ function Card7() {
       <p className="absolute font-['Manrope:Medium',sans-serif] font-medium leading-[1.25] left-[14px] text-[14px] text-white top-[62px] whitespace-nowrap">Канал InvestFuture</p>
       <p className="absolute font-['Manrope:Medium',sans-serif] font-medium leading-[1.25] left-[14px] text-[#6c7179] text-[14px] top-[84px] whitespace-nowrap">1 200 000+ подписчиков</p>
       <div className="absolute h-[266px] left-[14px] rounded-[12px] top-[126px] w-[213px]" data-name="image 95">
-        <img alt="" className="absolute inset-0 max-w-none object-cover opacity-30 pointer-events-none rounded-[12px] size-full" src={imgImage95} />
+        <img alt="" className="absolute inset-0 max-w-none object-cover opacity-30 pointer-events-none rounded-[12px] size-full" src={audience} />
       </div>
       <div className="-translate-x-1/2 absolute flex h-[137.566px] items-center justify-center left-[calc(50%+0.33px)] top-[129px] w-[121.793px]" style={{ "--transform-inner-width": "1200", "--transform-inner-height": "19" } as React.CSSProperties}>
         <div className="flex-none rotate-4">
           <div className="h-[130px] relative shadow-[0px_5px_15px_0px_rgba(0,0,0,0.35)] w-[113px]" data-name="IMG_1870 7 3">
-            <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImg187073} />
+            <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={audienceYoutubeBadge} />
           </div>
         </div>
       </div>
@@ -601,7 +601,7 @@ function RunningLine() {
   return (
     <div className="absolute h-[60px] left-[calc(8.33%+126px)] overflow-clip top-[155px] w-[368px]" data-name="running line">
       <div className="-translate-y-1/2 absolute h-[35px] left-[-79px] mix-blend-hard-light top-[calc(50%+0.5px)] w-[443px]" data-name="image 106">
-        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage106} />
+        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={awardsMarquee} />
       </div>
       <div className="absolute bg-gradient-to-l from-[rgba(247,247,247,0)] h-[60px] left-0 to-[#f7f7f7] top-0 w-[30px]" />
       <div className="absolute bottom-0 flex h-[60px] items-center justify-center right-0 w-[281px]">
@@ -621,7 +621,7 @@ function Card9() {
   return (
     <div className="absolute bg-[#f7f7f7] h-[145px] left-[calc(8.33%+126px)] overflow-clip rounded-[12px] top-[255px] w-[292px]" data-name="card 1">
       <div className="absolute h-[294px] left-0 top-[-97px] w-[368px]" data-name="image 107">
-        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage107} />
+        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={awardsCard1} />
       </div>
       <div className="absolute bg-gradient-to-b bottom-[-4px] from-[rgba(0,0,0,0)] h-[199px] left-0 to-black w-[368px]" />
       <Svgexport />
@@ -686,7 +686,7 @@ function Card10() {
   return (
     <div className="absolute bg-[#f7f7f7] h-[153px] left-[calc(8.33%+126px)] overflow-clip rounded-[12px] top-[412px] w-[292px]" data-name="card 2">
       <div className="absolute h-[230px] left-0 top-[-21px] w-[368px]" data-name="image 108">
-        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage108} />
+        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={awardsCard2} />
       </div>
       <div className="absolute bg-gradient-to-b bottom-0 from-[rgba(0,0,0,0)] h-[213px] left-0 to-black w-[368px]" />
       <Page />
@@ -716,7 +716,7 @@ function Card11() {
       <div className="absolute flex h-[404.133px] items-center justify-center left-[-23.69px] top-[-221.81px] w-[433.563px]" style={{ "--transform-inner-width": "1200", "--transform-inner-height": "19" } as React.CSSProperties}>
         <div className="flex-none rotate-[7.08deg]">
           <div className="h-[358.511px] relative w-[392.373px]" data-name="image 109">
-            <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage109} />
+            <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={awardsCard3} />
           </div>
         </div>
       </div>
@@ -1056,7 +1056,7 @@ function Card12() {
   return (
     <div className="absolute bg-[#f7f7f7] h-[119px] left-[calc(8.33%+126px)] overflow-clip rounded-[12px] top-[689px] w-[292px]" data-name="card 4">
       <div className="absolute h-[164px] left-0 top-[-19px] w-[292px]" data-name="image 122">
-        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage122} />
+        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={awardsCard4} />
       </div>
       <div className="absolute bg-gradient-to-b bottom-[-33px] from-[rgba(0,0,0,0)] h-[238px] left-0 to-black w-[368px]" />
       <div className="absolute font-['Manrope:Regular',sans-serif] font-normal leading-[1.25] left-[14px] text-[12px] text-white top-[66px] whitespace-nowrap">
@@ -1148,7 +1148,7 @@ function BCard() {
       <div className="absolute flex h-[180px] items-center justify-center left-0 top-0 w-[320.951px]" style={{ "--transform-inner-width": "1200", "--transform-inner-height": "19" } as React.CSSProperties}>
         <div className="-rotate-90 flex-none">
           <div className="h-[320.951px] relative w-[180px]" data-name="image 110">
-            <img alt="" className="absolute inset-0 max-w-none object-cover opacity-14 pointer-events-none size-full" src={imgImage110} />
+            <img alt="" className="absolute inset-0 max-w-none object-cover opacity-14 pointer-events-none size-full" src={experienceRbk} />
           </div>
         </div>
       </div>
@@ -1167,7 +1167,7 @@ function BCard1() {
   return (
     <div className="absolute bg-[#f7f7f7] h-[180px] left-[calc(33.33%+54px)] overflow-clip rounded-[16px] top-[218px] w-[292px]" data-name="b-card 2">
       <div className="absolute h-[505px] left-0 top-[-325px] w-[292px]" data-name="image 111">
-        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage111} />
+        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={experienceBusinessFmBg} />
       </div>
       <div className="absolute bg-white h-[180px] left-0 mix-blend-hue top-0 w-[292px]" />
       <div className="absolute flex flex-col font-['Manrope:Regular',sans-serif] font-normal inset-[76.67%_22.26%_7.78%_4.79%] justify-end leading-[1.25] text-[#111] text-[14px] whitespace-nowrap">
@@ -1177,7 +1177,7 @@ function BCard1() {
       <p className="absolute font-['Manrope:Medium',sans-serif] font-medium inset-[7.78%_4.79%_86.67%_68.84%] leading-[1.25] text-[#6c7179] text-[14px] text-right whitespace-nowrap">2021 – 2024</p>
       <div className="absolute aspect-[1201/324] left-[4.79%] right-[59.59%] top-[12px]" data-name="image-Photoroom 2">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <img alt="" className="absolute h-[128.09%] left-[-3.25%] max-w-none top-[-13.58%] w-[106.58%]" src={imgImagePhotoroom2} />
+          <img alt="" className="absolute h-[128.09%] left-[-3.25%] max-w-none top-[-13.58%] w-[106.58%]" src={experienceBusinessFm} />
         </div>
       </div>
     </div>
@@ -1249,7 +1249,7 @@ function Card13() {
   return (
     <div className="absolute bg-[#111] h-[240px] left-[150px] overflow-clip rounded-[16px] top-[780px] w-[444px]" data-name="card 3">
       <div className="-translate-y-1/2 absolute h-[297px] left-0 top-[calc(50%+0.5px)] w-[444px]" data-name="image 128">
-        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage128} />
+        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={experienceEvent01} />
       </div>
       <div className="absolute bg-gradient-to-b from-[rgba(0,0,0,0.9)] h-[240px] left-0 to-[rgba(0,0,0,0)] top-0 w-[444px]" />
       <Frame19 />
@@ -1270,20 +1270,20 @@ function Group9() {
   return (
     <div className="absolute contents left-0 top-0">
       <div className="absolute h-[240px] left-0 top-[28px] w-[615px]" data-name="image 115">
-        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage115} />
+        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={experienceEvent04} />
       </div>
       <div className="absolute flex h-[14px] items-center justify-center left-0 top-[14px] w-[615px]">
         <div className="-scale-y-100 flex-none">
           <div className="h-[14px] relative w-[615px]" data-name="image 116">
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-              <img alt="" className="absolute h-[1714.29%] left-[-0.06%] max-w-none top-0 w-[100.12%]" src={imgImage115} />
+              <img alt="" className="absolute h-[1714.29%] left-[-0.06%] max-w-none top-0 w-[100.12%]" src={experienceEvent04} />
             </div>
           </div>
         </div>
       </div>
       <div className="absolute h-[14px] left-0 top-0 w-[615px]" data-name="image 117">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <img alt="" className="absolute h-[1714.29%] left-[-0.06%] max-w-none top-0 w-[100.12%]" src={imgImage115} />
+          <img alt="" className="absolute h-[1714.29%] left-[-0.06%] max-w-none top-0 w-[100.12%]" src={experienceEvent04} />
         </div>
       </div>
     </div>
@@ -1364,7 +1364,7 @@ function Card15() {
   return (
     <div className="absolute bg-[#111] h-[240px] left-[150px] overflow-clip rounded-[16px] top-[528px] w-[444px]" data-name="card 1">
       <div className="absolute h-[276px] left-0 top-[-36px] w-[442.5px]" data-name="image 113">
-        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage113} />
+        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={experienceEvent03} />
       </div>
       <div className="absolute bg-gradient-to-b from-[rgba(0,0,0,0.9)] h-[240px] left-0 to-[rgba(0,0,0,0)] top-0 w-[444px]" />
       <div className="-translate-y-full absolute flex flex-col font-['Manrope:Medium',sans-serif] font-medium justify-end leading-[0] left-[14px] text-[24px] text-white top-[185px] whitespace-nowrap">
@@ -1401,7 +1401,7 @@ function Card16() {
   return (
     <div className="absolute bg-[#111] h-[240px] left-[150px] overflow-clip rounded-[16px] top-[1032px] w-[444px]" data-name="card 5">
       <div className="absolute h-[296px] left-0 top-0 w-[444px]" data-name="image 129">
-        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage129} />
+        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={experienceEvent05} />
       </div>
       <div className="absolute bg-gradient-to-b from-[rgba(0,0,0,0.9)] h-[240px] left-0 to-[rgba(0,0,0,0)] top-0 w-[444px]" />
       <div className="absolute flex h-[240px] items-center justify-center left-0 top-0 w-[444px]">
@@ -1444,7 +1444,7 @@ function Card17() {
   return (
     <div className="absolute bg-[#111] h-[240px] left-[calc(50%+6px)] overflow-clip rounded-[16px] top-[528px] w-[444px]" data-name="card 2">
       <div className="absolute h-[250px] left-0 top-0 w-[444px]" data-name="image 119">
-        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage119} />
+        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={experienceEvent02} />
       </div>
       <div className="absolute bg-gradient-to-b from-[rgba(0,0,0,0.9)] h-[101px] left-0 to-[rgba(0,0,0,0)] top-0 w-[444px]" />
       <Frame27 />
@@ -1482,7 +1482,7 @@ function Card18() {
   return (
     <div className="absolute bg-[#111] h-[240px] left-[calc(50%+6px)] overflow-clip rounded-[16px] top-[780px] w-[444px]" data-name="card 4">
       <div className="absolute bottom-0 h-[250px] left-0 w-[444px]" data-name="image 135">
-        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage135} />
+        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={experienceEvent06} />
       </div>
       <div className="absolute bg-gradient-to-b from-[rgba(0,0,0,0.9)] h-[127px] left-0 to-[rgba(0,0,0,0)] top-[-26px] w-[444px]" />
       <div className="absolute flex h-[179px] items-center justify-center left-0 top-[83px] w-[444px]">
@@ -1635,7 +1635,7 @@ function BCard2() {
       <div className="absolute flex h-[180px] items-center justify-center right-0 top-0 w-[120px]">
         <div className="-scale-y-100 flex-none rotate-180">
           <div className="h-[180px] relative w-[120px]" data-name="image-Photoroom (2) 1">
-            <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImagePhotoroom21} />
+            <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={experienceBusinessFm1} />
           </div>
         </div>
       </div>
@@ -1854,7 +1854,7 @@ function Frame61() {
   return (
     <div className="absolute bg-[#7430f7] left-[20px] overflow-clip rounded-[8px] size-[36px] top-[20px]">
       <div className="absolute left-0 size-[36px] top-0" data-name="image 143">
-        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage143} />
+        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={ctaAvatar} />
       </div>
     </div>
   );

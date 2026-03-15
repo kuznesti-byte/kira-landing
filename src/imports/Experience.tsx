@@ -1,9 +1,9 @@
 import svgPaths from "./svg-nzzm9y0jmh";
-import imgImage110 from "figma:asset/fdc7b25fa3322731830556ef5d1e13b2a2499eab.png";
-import imgImage111 from "figma:asset/95c490f951717f48f8593a204a9c566ce1ed97e6.png";
-import imgImagePhotoroom2 from "figma:asset/8828556f281f99adec78855149f841f0d7a1ddf9.png";
-import imgBCard1 from "figma:asset/ecdc1158f26701610b728d7541c53f122da625f4.png";
-import imgImagePhotoroom21 from "figma:asset/e022bef6cb495e05fdf93aa98c137504b32269d9.png";
+import experienceRbk from "@assets/experience-rbk.webp";
+import experienceBusinessFmBg from "@assets/experience-business-fm-bg.webp";
+import experienceBusinessFm from "@assets/experience-business-fm.webp";
+import experienceRadio from "@assets/experience-radio.webp";
+import experienceRecordMic from "@assets/experience-record-mic.webp";
 
 function Group2() {
   return (
@@ -45,7 +45,7 @@ function BCard() {
       <div className="absolute flex h-[180px] items-center justify-center left-0 top-0 w-[320.951px]" style={{ "--transform-inner-width": "1200", "--transform-inner-height": "19" } as React.CSSProperties}>
         <div className="-rotate-90 flex-none">
           <div className="h-[320.951px] relative w-[180px]" data-name="image 110">
-            <img alt="" className="absolute inset-0 max-w-none object-cover opacity-14 pointer-events-none size-full" src={imgImage110} />
+            <img alt="" className="absolute inset-0 max-w-none object-cover opacity-14 pointer-events-none size-full" src={experienceRbk} />
           </div>
         </div>
       </div>
@@ -64,7 +64,7 @@ function BCard1() {
   return (
     <div className="absolute bg-[#f7f7f7] h-[180px] left-[calc(33.33%+54px)] overflow-clip rounded-[16px] top-[218px] w-[292px]" data-name="b-card 2">
       <div className="absolute h-[505px] left-0 top-[-325px] w-[292px]" data-name="image 111">
-        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage111} />
+        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={experienceBusinessFmBg} />
       </div>
       <div className="absolute bg-white h-[180px] left-0 mix-blend-hue top-0 w-[292px]" />
       <div className="absolute flex flex-col font-['Manrope:Regular',sans-serif] font-normal inset-[76.67%_22.26%_7.78%_4.79%] justify-end leading-[1.25] text-[#111] text-[14px] whitespace-nowrap">
@@ -74,7 +74,7 @@ function BCard1() {
       <p className="absolute font-['Manrope:Medium',sans-serif] font-medium inset-[7.78%_4.79%_86.67%_68.84%] leading-[1.25] text-[#6c7179] text-[14px] text-right whitespace-nowrap">2021 – 2024</p>
       <div className="absolute aspect-[1201/324] left-[4.79%] right-[59.59%] top-[12px]" data-name="image-Photoroom 2">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <img alt="" className="absolute h-[128.09%] left-[-3.25%] max-w-none top-[-13.58%] w-[106.58%]" src={imgImagePhotoroom2} />
+          <img alt="" className="absolute h-[128.09%] left-[-3.25%] max-w-none top-[-13.58%] w-[106.58%]" src={experienceBusinessFm} />
         </div>
       </div>
     </div>
@@ -144,12 +144,12 @@ function BCard2() {
     <div className="absolute h-[180px] left-[calc(66.67%-42px)] overflow-clip rounded-[16px] top-[218px] w-[292px]" data-name="b-card 1">
       <div aria-hidden="true" className="absolute inset-0 pointer-events-none rounded-[16px]">
         <div className="absolute bg-[#111] inset-0 rounded-[16px]" />
-        <img alt="" className="absolute max-w-none object-cover opacity-20 rounded-[16px] size-full" src={imgBCard1} />
+        <img alt="" className="absolute max-w-none object-cover opacity-20 rounded-[16px] size-full" src={experienceRadio} />
       </div>
       <div className="absolute flex h-[180px] items-center justify-center right-0 top-0 w-[120px]">
         <div className="-scale-y-100 flex-none rotate-180">
           <div className="h-[180px] relative w-[120px]" data-name="image-Photoroom (2) 1">
-            <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImagePhotoroom21} />
+            <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={experienceRecordMic} />
           </div>
         </div>
       </div>

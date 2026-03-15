@@ -1,1 +1,28 @@
-node_modules
+# Локальные задачи (не коммитить)
+PERFORMANCE-TASKS.md
+
+# Dependencies
+node_modules/
+
+# Build
+dist/
+build/
+
+# Env
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editor
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db

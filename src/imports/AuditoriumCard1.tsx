@@ -1,6 +1,6 @@
 import svgPaths from "./svg-qt0ocdwarc";
-import imgImage95 from "figma:asset/7138560695863c7eb11b7f8f71c264d9aadd7f5f.png";
-import imgImageGold from "figma:asset/dbf6fa0fb6a713db7eff5ecff83a8396acb0f6fa.png";
+import audience from "@assets/audience.webp";
+import audienceYoutubeBadge from "@assets/audience-youtube-badge.webp";
 
 function Group1() {
   return (
@@ -65,12 +65,12 @@ export default function AuditoriumCard() {
       <p className="absolute font-['Manrope:Medium',sans-serif] font-medium leading-[1.25] left-[14px] text-[14px] text-white top-[62px] whitespace-nowrap">Канал InvestFuture</p>
       <p className="absolute font-['Manrope:Medium',sans-serif] font-medium leading-[1.25] left-[14px] text-[#6c7179] text-[14px] top-[84px] whitespace-nowrap">1 200 000+ подписчиков</p>
       <div className="absolute h-[266px] left-[14px] rounded-[12px] top-[126px] w-[213px]" data-name="image 95">
-        <img alt="" className="absolute inset-0 max-w-none object-cover opacity-30 pointer-events-none rounded-[12px] size-full" src={imgImage95} />
+        <img alt="" className="absolute inset-0 max-w-none object-cover opacity-30 pointer-events-none rounded-[12px] size-full" src={audience} />
       </div>
       <div className="-translate-x-1/2 absolute flex h-[137.566px] items-center justify-center left-[calc(50%+0.33px)] top-[129px] w-[121.793px]" style={{ "--transform-inner-width": "1200", "--transform-inner-height": "19" } as React.CSSProperties}>
         <div className="flex-none rotate-4">
           <div className="h-[130px] relative shadow-[0px_5px_15px_0px_rgba(0,0,0,0.35)] w-[113px]" data-name="image gold">
-            <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImageGold} />
+            <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={audienceYoutubeBadge} />
           </div>
         </div>
       </div>

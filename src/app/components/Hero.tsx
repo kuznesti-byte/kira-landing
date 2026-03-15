@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
-import heroImage from "figma:asset/7b1a4703af3946fe89cdc1a2c839bf2b5eac65a2.png";
+import heroImage from "@assets/hero-alt.webp";
 import { ChevronDown, Play } from "lucide-react";
 
 export function Hero() {
@@ -146,6 +146,9 @@ export function Hero() {
                 <img
                   src={heroImage}
                   alt="Кіра Юхтенко"
+                  fetchpriority="high"
+                  width={1800}
+                  height={11456}
                   className="w-full h-full object-cover object-top"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/60 via-transparent to-transparent" />

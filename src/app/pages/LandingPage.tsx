@@ -3,59 +3,58 @@ import { motion, useInView, useScroll, useTransform, AnimatePresence } from "fra
 import { Link } from "react-router";
 import svgPaths from "../../imports/svg-p1r04suo2f";
 import svgNzzm from "../../imports/svg-nzzm9y0jmh";
-import imgBCard1 from "figma:asset/ecdc1158f26701610b728d7541c53f122da625f4.png";
-
-const svgFooter = svgPaths;
-
-/* ── figma assets ── */
-import imgHero from "figma:asset/ea49cc5f90b1dd04a9125d024bc9be8092d4020c.png";
-import imgAboutPhoto from "figma:asset/90fbbe1b21f76e8751daa3827ad4760aedbb782d.png";
-import imgEllipse2 from "figma:asset/a9094b5b1454fa7cb139d1d2ce2da9cc7ec7b785.png";
-import imgEllipse3 from "figma:asset/16a242d07ea158aad5a4b677afda0b108acb113f.png";
-import imgEllipse4 from "figma:asset/236f3f3de5b632e8a62129bf67adb40c4e4c6111.png";
-import imgEllipse5 from "figma:asset/f9aaf6ef14c1160037b4bdd8bfeffca161b401e6.png";
-import imgEllipse6 from "figma:asset/d2f6f983036fe3abf64157b744f2998ec1525b7e.png";
-import imgEllipse7 from "figma:asset/29435a5d799d8885f182f68314a87aa60fe508d5.png";
-import imgEllipse8 from "figma:asset/d8d09274dc641a22c7770d5cc1b46026a8ad1f69.png";
-import imgEllipse9 from "figma:asset/a18dacfe4f3fd1141e047896568b13971eff2519.png";
-import imgEllipse10 from "figma:asset/79e8f0e8b00f9c2918781131da314d33aefddf1f.png";
-import imgEllipse11 from "figma:asset/d1e094fd08773af7d806439e67f0b238563dd5e8.png";
-import imgEllipse12 from "figma:asset/4841261ba8ffd831fb10b9bf20e272d8c80dee0d.png";
-import imgEllipse13 from "figma:asset/1193b13c9b1d2dc3514652b91c4f39fa28155d4e.png";
-import imgEllipse14 from "figma:asset/3d3380ee2c8452f03dfab9773845a8aa2ef08628.png";
-import imgImage95 from "figma:asset/7138560695863c7eb11b7f8f71c264d9aadd7f5f.png";
-import imgImg187073 from "figma:asset/dbf6fa0fb6a713db7eff5ecff83a8396acb0f6fa.png";
-import imgImage97 from "figma:asset/2705dde6df663c0c075c31a30f080c91b84b1389.png";
-import imgImage100 from "figma:asset/9401ac93c056e80fc1080dd21933830e4dcec8fd.png";
-import imgImage98 from "figma:asset/78a854ca8b673bd6bffdee03116fa51747f88464.png";
-import imgImage106 from "figma:asset/cda90e2fc75b3399bbdbbfba56b5437a7a11de7f.png";
-import imgImage107 from "figma:asset/fb4e490e4450bcbe44bc6704da986dc666dfbf36.png";
-import imgImage108 from "figma:asset/f52a52df61eafa8e6e51ffd29826dad0a4b89b57.png";
-import imgImage109 from "figma:asset/c43aafe62d688779d1bd6afffb8133f829c24f07.png";
-import imgImage122 from "figma:asset/8cc2e89b8de60b0b2a12a5386dfcb414e8a566c4.png";
-import imgImage110 from "figma:asset/fdc7b25fa3322731830556ef5d1e13b2a2499eab.png";
-import imgImage111 from "figma:asset/95c490f951717f48f8593a204a9c566ce1ed97e6.png";
-import imgImagePhotoroom2 from "figma:asset/8828556f281f99adec78855149f841f0d7a1ddf9.png";
-import imgImage128 from "figma:asset/d3d6ed8a5b2a3e05326885d345697f42eae9a721.png";
-import imgImage115 from "figma:asset/c5f9c024420db6ec3eec816ea9b3783b829b1e9f.png";
-import imgImage113 from "figma:asset/6c4c4d41466bb4b11c72491502e9b194ef5d8bdc.png";
-import imgImage129 from "figma:asset/1f12c88da56cb7beafe11d7c55c4094b5211bb47.png";
-import imgImage119 from "figma:asset/ee7675e87ebe03cddf866b1e5bc9be24591363b8.png";
-import imgImage135 from "figma:asset/4a60bed36732c43c3ccbc5f3caf7f39b2f3df051.png";
-import imgImagePhotoroom21 from "figma:asset/e022bef6cb495e05fdf93aa98c137504b32269d9.png";
-import imgImage143 from "figma:asset/522f975b11c1740b97d9cbfacf17366b1ee2b537.png";
-import imgImage136 from "figma:asset/86b943fd97794eb6d6804b464a84c0fef48452a8.png";
-import imgImage123 from "figma:asset/55d1bf37236020aa06b954c907de7ca81fd5f6f3.png";
-import imgImage125 from "figma:asset/20f661c3190c4be80c7dc99e2fff6a40b0f5bdf3.png";
-import imgImage124 from "figma:asset/aa62c45368116801ca7bf3d497b46d13d972cc32.png";
-import imgImage133 from "figma:asset/a421bb4a032156a5584e928a4d5cb4b3dadb1df9.png";
-import imgImage131 from "figma:asset/505e7c34631a6f2721b2039a547fe488c6c69865.png";
-import imgImage120 from "figma:asset/631dd4bcfe28257a8623a5193927c1cc65f31c25.png";
-import imgImage126 from "figma:asset/533808df128df2e260c87d2169161b0fbb77ad8b.png";
-import imgImage132 from "figma:asset/e2516fe0b79fd9a601a64729325c106d603a6861.png";
+import experienceRadio from "@assets/experience-radio.webp";
+import hero from "@assets/hero.webp";
+import hero768 from "@assets/hero-768w.webp";
+import hero1200 from "@assets/hero-1200w.webp";
+import aboutPhoto from "@assets/about-photo.webp";
+import imgEllipse2 from "@assets/audience-avatar-01.webp";
+import imgEllipse3 from "@assets/audience-avatar-02.webp";
+import imgEllipse4 from "@assets/audience-avatar-03.webp";
+import imgEllipse5 from "@assets/audience-avatar-04.webp";
+import imgEllipse6 from "@assets/audience-avatar-05.webp";
+import imgEllipse7 from "@assets/audience-avatar-06.webp";
+import imgEllipse8 from "@assets/audience-avatar-07.webp";
+import imgEllipse9 from "@assets/audience-avatar-08.webp";
+import imgEllipse10 from "@assets/audience-avatar-09.webp";
+import imgEllipse11 from "@assets/audience-avatar-10.webp";
+import imgEllipse12 from "@assets/audience-avatar-11.webp";
+import imgEllipse13 from "@assets/audience-avatar-12.webp";
+import imgEllipse14 from "@assets/audience-avatar-13.webp";
+import audience from "@assets/audience.webp";
+import audienceYoutubeBadge from "@assets/audience-youtube-badge.webp";
+import audienceTelegramAvatar from "@assets/audience-telegram-avatar.webp";
+import audienceTelegramCard2 from "@assets/audience-telegram-card2.webp";
+import audienceTelegramCard1 from "@assets/audience-telegram-card1.webp";
+import awardsMarquee from "@assets/awards-marquee.webp";
+import awardsCard1 from "@assets/awards-card1.webp";
+import awardsCard2 from "@assets/awards-card2.webp";
+import awardsCard3 from "@assets/awards-card3.webp";
+import awardsCard4 from "@assets/awards-card4.webp";
+import experienceRbk from "@assets/experience-rbk.webp";
+import experienceBusinessFmBg from "@assets/experience-business-fm-bg.webp";
+import experienceBusinessFm from "@assets/experience-business-fm.webp";
+import experienceEvent01 from "@assets/experience-event-01.webp";
+import experienceEvent04 from "@assets/experience-event-04.webp";
+import experienceEvent03 from "@assets/experience-event-03.webp";
+import experienceEvent05 from "@assets/experience-event-05.webp";
+import experienceEvent02 from "@assets/experience-event-02.webp";
+import experienceEvent06 from "@assets/experience-event-06.webp";
+import experienceRecordMic from "@assets/experience-record-mic.webp";
+import ctaAvatar from "@assets/cta-avatar.webp";
+import experienceEvent15 from "@assets/experience-event-15.webp";
+import experienceEvent14 from "@assets/experience-event-14.webp";
+import experienceEvent12 from "@assets/experience-event-12.webp";
+import experienceEvent13 from "@assets/experience-event-13.webp";
+import experienceEvent08 from "@assets/experience-event-08.webp";
+import experienceEvent09 from "@assets/experience-event-09.webp";
+import experienceEvent10 from "@assets/experience-event-10.webp";
+import experienceEvent11 from "@assets/experience-event-11.webp";
+import experienceEvent07 from "@assets/experience-event-07.webp";
 
 /* ── shared ── */
 const F = "Manrope, sans-serif";
+const svgFooter = svgPaths;
 
 function useInViewOnce(margin = "-80px") {
   const ref = useRef(null);
@@ -236,7 +235,16 @@ function HeroSection() {
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
         >
-          <img src={imgHero} alt="Кира Юхтенко" className="w-full h-full object-cover object-top" />
+          <img
+            src={hero}
+            srcSet={`${hero768} 512w, ${hero1200} 800w, ${hero} 2733w`}
+            sizes="(max-width: 768px) 384px, 767px"
+            fetchpriority="high"
+            alt="Кира Юхтенко"
+            width={2733}
+            height={4096}
+            className="w-full h-full object-cover object-top"
+          />
         </motion.div>
 
         {/* Gradient 1 — plain fade */}
@@ -283,7 +291,16 @@ function HeroSection() {
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
       >
-        <img src={imgHero} alt="Кира Юхтенко" className="absolute inset-0 w-full h-full object-cover" />
+        <img
+        src={hero}
+        srcSet={`${hero768} 512w, ${hero1200} 800w, ${hero} 2733w`}
+        sizes="(max-width: 768px) 384px, 767px"
+        fetchpriority="high"
+        alt="Кира Юхтенко"
+        width={2733}
+        height={4096}
+        className="absolute inset-0 w-full h-full object-cover"
+      />
       </motion.div>
 
       {/* Bottom fade — блюр убран */}
@@ -365,7 +382,7 @@ function AboutSection() {
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
           >
-            <img src={imgAboutPhoto} alt="Кира Юхтенко" className="w-full h-full object-cover" />
+            <img src={aboutPhoto} alt="Кира Юхтенко" width={2048} height={2560} fetchpriority="high" className="w-full h-full object-cover" />
           </motion.div>
 
           {/* Bio */}
@@ -659,8 +676,10 @@ function YouTubeAudienceCard({ inView }: { inView: boolean }) {
 
           {/* Фоновое фото */}
           <motion.img
-            src={imgImage95}
+            src={audience}
             alt=""
+            width={2892}
+            height={3610}
             className="absolute inset-0 w-full h-full object-cover pointer-events-none rounded-[12px]"
             animate={{ opacity: hovered ? 0.10 : 0.30 }}
             transition={{ duration: 1.2 }}
@@ -687,7 +706,7 @@ function YouTubeAudienceCard({ inView }: { inView: boolean }) {
                 : { duration: 0.6, ease: "easeOut" }
               }
             >
-              <img src={imgImg187073} alt="YouTube Gold Button" className="w-[113px] h-[130px] object-cover" />
+              <img src={audienceYoutubeBadge} alt="YouTube Gold Button" width={3048} height={3514} loading="lazy" className="w-[113px] h-[130px] object-cover" />
             </motion.div>
           </div>
 
@@ -718,7 +737,7 @@ function AudienceSection() {
 
   return (
     <section id="audience" className="bg-[#f7f7f7] pt-20 pb-16 overflow-hidden" ref={ref}>
-      <div className="px-6 lg:px-[226px]">
+      <div className="max-w-[1200px] mx-auto px-6 lg:px-[226px]">
         <motion.p
           className="text-[28px] leading-[1.25] text-[#111] mb-10"
           style={{ fontFamily: F, fontWeight: 600 }}
@@ -754,7 +773,7 @@ function AudienceSection() {
               rel="noopener noreferrer"
               className="group absolute top-[54px] left-2 right-2 bg-[#111] rounded-[8px] h-[115px] overflow-hidden block cursor-pointer"
             >
-              <img src={imgImage98} alt="" className="absolute inset-0 w-full h-full object-cover opacity-20" />
+              <img src={audienceTelegramCard1} alt="" width={1600} height={814} loading="lazy" className="absolute inset-0 w-full h-full object-cover opacity-20" />
               <p className="absolute top-[14px] left-[14px] text-white text-[14px] leading-[1.25]" style={{ fontFamily: F, fontWeight: 500 }}>
                 Telegram-сеть InvestFuture
               </p>
@@ -773,7 +792,7 @@ function AudienceSection() {
                   <div className="absolute left-0 flex items-center h-[18px] transition-all duration-300 transform translate-y-[36px] opacity-0 group-hover:translate-y-[18px] group-hover:opacity-100">
                     {avatars.map((av, i) => (
                       <div key={i} className="w-[14px] h-[14px] rounded-full overflow-hidden border border-[#111] -ml-1 first:ml-0" style={{ zIndex: avatars.length - i }}>
-                        <img src={av} alt="" className="w-full h-full object-cover" />
+                        <img src={av} alt="" width={32} height={32} loading="lazy" className="w-full h-full object-cover" />
                       </div>
                     ))}
                   </div>
@@ -794,7 +813,7 @@ function AudienceSection() {
               rel="noopener noreferrer"
               className="group absolute top-[177px] left-2 right-2 bg-[#111] rounded-[8px] h-[115px] overflow-hidden block cursor-pointer"
             >
-              <img src={imgImage100} alt="" className="absolute inset-0 w-full h-full object-cover opacity-20" />
+              <img src={audienceTelegramCard2} alt="" width={1600} height={814} loading="lazy" className="absolute inset-0 w-full h-full object-cover opacity-20" />
               <p className="absolute top-[14px] left-[14px] text-white text-[14px] leading-[1.25]" style={{ fontFamily: F, fontWeight: 500 }}>
                 Личный блог <span className="text-[#6c7179]">(Кира Юхтенко)</span>
               </p>
@@ -809,7 +828,7 @@ function AudienceSection() {
                   </p>
                   <div className="absolute left-0 flex items-center h-[18px] transition-all duration-300 transform translate-y-[36px] opacity-0 group-hover:translate-y-[18px] group-hover:opacity-100">
                     <div className="w-[14px] h-[14px] rounded-full overflow-hidden border border-[#111]">
-                      <img src={imgImage97} alt="" className="w-full h-full object-cover rounded-full" />
+                      <img src={audienceTelegramAvatar} alt="" width={640} height={640} loading="lazy" className="w-full h-full object-cover rounded-full" />
                     </div>
                   </div>
                 </div>
@@ -841,7 +860,7 @@ function AudienceSection() {
               </div>
               <div className="flex -space-x-0.5">
                 {[imgEllipse12, imgEllipse13, imgEllipse14].map((av, i) => (
-                  <img key={i} src={av} alt="" className="w-[14px] h-[14px] rounded-full" />
+                  <img key={i} src={av} alt="" width={32} height={32} loading="lazy" className="w-[14px] h-[14px] rounded-full" />
                 ))}
               </div>
             </div>
@@ -850,7 +869,7 @@ function AudienceSection() {
                 <p className="text-[#111] text-[14px]" style={{ fontFamily: F, fontWeight: 500 }}>IF EdTech</p>
                 <p className="text-[#6c7179] text-[14px]" style={{ fontFamily: F, fontWeight: 500 }}>10-ки тыс. пользователей</p>
               </div>
-              <img src={imgEllipse11} alt="" className="w-[14px] h-[14px] rounded-full" />
+              <img src={imgEllipse11} alt="" width={32} height={32} loading="lazy" className="w-[14px] h-[14px] rounded-full" />
             </div>
           </motion.div>
         </div>
@@ -917,12 +936,12 @@ const ALL_AWARD_YEARS = [
 // Heights match Figma exactly: Card9=145, Card10=153, Card11=100, Card12=119
 const mediaCards = [
   {
-    img: imgImage107, height: 145,
+    img: awardsCard1, height: 145,
     logo: <svg className="h-4 w-auto" fill="none" viewBox="0 0 63.699 16"><path d={svgPaths.p3800e900} fill="white" /></svg>,
     quote: "«Это очень взвешенный и всесторонний канал, который предлагает ежедневные выпуски, информацию и аналитику о фондовом рынке в самых разнообразных срезах»",
   },
   {
-    img: imgImage108, height: 153,
+    img: awardsCard2, height: 153,
     logo: (
       <svg className="h-4 w-auto" fill="none" viewBox="0 0 59.7143 16">
         <g><path clipRule="evenodd" d="M0 0V14.9333L14.9333 0H0Z" fill="#92CFAE" fillRule="evenodd" /><path clipRule="evenodd" d={svgPaths.pf8d0e00} fill="#2A8288" fillRule="evenodd" /></g>
@@ -943,7 +962,7 @@ const mediaCards = [
     )
   },
   {
-    img: imgImage109, height: 100,
+    img: awardsCard3, height: 100,
     logo: (
       <svg className="h-4 w-auto" fill="none" viewBox="0 0 34.4 16">
         <path d={svgPaths.p316cb600} fill="#BD1D1D" />
@@ -965,7 +984,7 @@ const mediaCards = [
     quote: "«Финансовый обозреватель и сооснователь медиапроекта InvestFuture Кира Юхтенко»",
   },
   {
-    img: imgImage122, height: 119,
+    img: awardsCard4, height: 119,
     logo: (
       <svg className="h-5 w-auto" fill="none" viewBox="0 0 44 20">
         <path d={svgPaths.p1426ac80} fill="white" />
@@ -985,7 +1004,7 @@ function AwardsSection() {
 
   return (
     <section id="awards" className="bg-[#f7f7f7] pt-10 pb-16 overflow-x-clip" ref={ref}>
-      <div className="px-6 lg:px-[226px]">
+      <div className="max-w-[1200px] mx-auto px-[226px]">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -1008,9 +1027,9 @@ function AwardsSection() {
           >
             {[...Array(2)].map((_, rep) => (
               <div key={rep} className="flex gap-8 shrink-0 items-center">
-                <img src={imgImage106} alt="" className="h-[35px] w-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300" />
-                <img src={imgImage106} alt="" className="h-[35px] w-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300" />
-                <img src={imgImage106} alt="" className="h-[35px] grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300" />
+                <img src={awardsMarquee} alt="" width={1434} height={113} loading="lazy" className="h-[35px] w-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300" />
+                <img src={awardsMarquee} alt="" width={1434} height={113} loading="lazy" className="h-[35px] w-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300" />
+                <img src={awardsMarquee} alt="" width={1434} height={113} loading="lazy" className="h-[35px] grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300" />
               </div>
             ))}
           </motion.div>
@@ -1029,7 +1048,7 @@ function AwardsSection() {
                 animate={inView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.1 + i * 0.09, ease: [0.22, 1, 0.36, 1] }}
               >
-                <img src={card.img} alt="" className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110" />
+                <img src={card.img} alt="" width={666} height={360} loading="lazy" className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110" />
                 <div className="absolute inset-0 bg-gradient-to-b from-black/10 to-black/80" />
                 <div className="absolute top-[14px] left-[14px]">{card.logo}</div>
                 <div className="absolute top-[14px] right-[14px] w-3 h-3">
@@ -1037,12 +1056,12 @@ function AwardsSection() {
                     <path d={svgPaths.p17a95380} stroke="white" strokeWidth="1.3" />
                   </svg>
                 </div>
-                <p
+                <div
                   className="absolute bottom-3 left-[14px] right-[14px] text-white leading-[1.25]"
                   style={{ fontFamily: F, fontWeight: 400, fontSize: 11 }}
                 >
                   {card.quote}
-                </p>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -1112,32 +1131,32 @@ const filterTabs = ["Все", "Спикер / лектор", "Эксперт", "
 
 const eventCards: { img: string | null; tags: string[]; title: string; desc: string; year: string }[] = [
   // 2025
-  { img: imgImage128, tags: ["Эксперт"], title: "Т-Двор, панельная сессия «Кто заплатит за нашу старость?»", desc: "Инвестиции в будущее: что мешает поверить в ПДС и как это меняется", year: "2025", link: "https://www.rbc.ru/quote/news/article/685ba97f9a794754c6c69308" },
-  { img: imgImage119, tags: ["Эксперт"], title: "Подкаст Банка России «Кому принадлежит ЦБ?»", desc: "Гость подкаста Банка России с Владимиром Чистюхиным и Алексеем Антоновым", year: "2025", link: "https://t.me/centralbank_russia/2754" },
-  { img: imgImage113, tags: ["Спикер / лектор"], title: "РБК Инвест Weekend", desc: "Лекция «Почему мы теряем деньги в инвестициях и как этого избежать» с Женей Поповым", year: "2025", link: "https://investwknd.rbc.ru/speakers" },
-  { img: imgImage115, tags: ["Модерация"], title: "Онлайн-конференция с экспертами БКС", desc: "Онлайн-конференция брокера БКС по криптовалютному рынку", year: "2025", link: "https://vkvideo.ru/video-16289875_456240984?sh=4" },
-  { img: imgImage129, tags: ["Спикер / лектор"], title: "«Территория будущего. Москва 2030»", desc: "Ликбез по инвестициям: как создать семейный капитал и поддержать экономику", year: "2025", link: "https://moscow2030.mos.ru/events/lektsiya_likbez_po_investitsiyam_kak_sozdat_semeynyy_kapital_i_podderzhat_ekonomiku/" },
-  { img: imgImage135, tags: ["Интервью"], title: "Аиша Кубезова — руководитель брокерского бизнеса Сбера", desc: "Куда инвестирует руководитель брокерского бизнеса Сбера? Фондовый рынок 2025", year: "2025", link: "https://vk.com/video-183755267_456241602?ysclid=mlffupcm9m67950931" },
+  { img: experienceEvent01, tags: ["Эксперт"], title: "Т-Двор, панельная сессия «Кто заплатит за нашу старость?»", desc: "Инвестиции в будущее: что мешает поверить в ПДС и как это меняется", year: "2025", link: "https://www.rbc.ru/quote/news/article/685ba97f9a794754c6c69308" },
+  { img: experienceEvent02, tags: ["Эксперт"], title: "Подкаст Банка России «Кому принадлежит ЦБ?»", desc: "Гость подкаста Банка России с Владимиром Чистюхиным и Алексеем Антоновым", year: "2025", link: "https://t.me/centralbank_russia/2754" },
+  { img: experienceEvent03, tags: ["Спикер / лектор"], title: "РБК Инвест Weekend", desc: "Лекция «Почему мы теряем деньги в инвестициях и как этого избежать» с Женей Поповым", year: "2025", link: "https://investwknd.rbc.ru/speakers" },
+  { img: experienceEvent04, tags: ["Модерация"], title: "Онлайн-конференция с экспертами БКС", desc: "Онлайн-конференция брокера БКС по криптовалютному рынку", year: "2025", link: "https://vkvideo.ru/video-16289875_456240984?sh=4" },
+  { img: experienceEvent05, tags: ["Спикер / лектор"], title: "«Территория будущего. Москва 2030»", desc: "Ликбез по инвестициям: как создать семейный капитал и поддержать экономику", year: "2025", link: "https://moscow2030.mos.ru/events/lektsiya_likbez_po_investitsiyam_kak_sozdat_semeynyy_kapital_i_podderzhat_ekonomiku/" },
+  { img: experienceEvent06, tags: ["Интервью"], title: "Аиша Кубезова — руководитель брокерского бизнеса Сбера", desc: "Куда инвестирует руководитель брокерского бизнеса Сбера? Фондовый рынок 2025", year: "2025", link: "https://vk.com/video-183755267_456241602?ysclid=mlffupcm9m67950931" },
   { img: null, tags: ["Спикер / лектор", "Эксперт"], title: "Форум Investment Leaders Award", desc: "Стратегия 2026: где инвестору искать доходность?", year: "2025", link: "" },
-  { img: imgImage132, tags: ["Интервью"], title: "Директор Департамента информационной безопасности Банка России Вадима Уварова", desc: "Новые способы мошенничества, как обезопасить себя и своих близких", year: "2025", link: "https://kalinuszn74.ru/allnews/intervyu-direktora-departamenta-informacionnoi-bezopasnosti-banka-rossii-vadima-uvarova-finansovomu-blogeru-kire-yuhtenko-shemy-telefonnyh-moshennikov-predstavlyayut-ugrozu-dazhe-dlya-finansovo-gramotnyh-lyudei?ysclid=mlffollf9n288615465" },
+  { img: experienceEvent07, tags: ["Интервью"], title: "Директор Департамента информационной безопасности Банка России Вадима Уварова", desc: "Новые способы мошенничества, как обезопасить себя и своих близких", year: "2025", link: "https://kalinuszn74.ru/allnews/intervyu-direktora-departamenta-informacionnoi-bezopasnosti-banka-rossii-vadima-uvarova-finansovomu-blogeru-kire-yuhtenko-shemy-telefonnyh-moshennikov-predstavlyayut-ugrozu-dazhe-dlya-finansovo-gramotnyh-lyudei?ysclid=mlffollf9n288615465" },
   // 2024
-  { img: imgImage133, tags: ["Интервью"], title: "Сергей Хотимский — основатель Совкомбанка", desc: "IPO Совкомбанка, задаем вопросы инвесторов", year: "2024", link: "https://vk.com/video-183755267_456241602?ysclid=mlffupcm9m67950931" },
-  { img: imgImage131, tags: ["Интервью"], title: "Член Совета директоров Банка России Михаил Мамута", desc: "Кто потеряет деньги на бирже, почему мошенников не истребить и что с тестами для квалов", year: "2024", link: "https://www.youtube.com/watch?v=HkreSlKbQ3Q" },
-  { img: imgImage120, tags: ["Эксперт"], title: "Подкаст Сбера «Короче»: И��вестиции — это несложно!", desc: "Разбираем инвестиции: когда, как и во что лучше всего вкладывать деньги, чтобы они приумножались", year: "2024", link: "https://vk.com/video-22522055_456244643" },
-  { img: imgImage126, tags: ["Спикер / лектор", "Эксперт"], title: "Форум Investment Leaders Award «Как обогнать инфляцию в 2025?»", desc: "Investment Leaders 2024: в ожидании массовых дефолтов в 2025 году", year: "2024", link: "https://www.finversia.ru/news/events/investment-leaders-2024-v-ozhidanii-massovykh-defoltov-v-2025-godu-147062?ysclid=mm997gnt6h800120279" },
+  { img: experienceEvent08, tags: ["Интервью"], title: "Сергей Хотимский — основатель Совкомбанка", desc: "IPO Совкомбанка, задаем вопросы инвесторов", year: "2024", link: "https://vk.com/video-183755267_456241602?ysclid=mlffupcm9m67950931" },
+  { img: experienceEvent09, tags: ["Интервью"], title: "Член Совета директоров Банка России Михаил Мамута", desc: "Кто потеряет деньги на бирже, почему мошенников не истребить и что с тестами для квалов", year: "2024", link: "https://www.youtube.com/watch?v=HkreSlKbQ3Q" },
+  { img: experienceEvent10, tags: ["Эксперт"], title: "Подкаст Сбера «Короче»: И��вестиции — это несложно!", desc: "Разбираем инвестиции: когда, как и во что лучше всего вкладывать деньги, чтобы они приумножались", year: "2024", link: "https://vk.com/video-22522055_456244643" },
+  { img: experienceEvent11, tags: ["Спикер / лектор", "Эксперт"], title: "Форум Investment Leaders Award «Как обогнать инфляцию в 2025?»", desc: "Investment Leaders 2024: в ожидании массовых дефолтов в 2025 году", year: "2024", link: "https://www.finversia.ru/news/events/investment-leaders-2024-v-ozhidanii-massovykh-defoltov-v-2025-godu-147062?ysclid=mm997gnt6h800120279" },
   // 2023
-  { img: imgImage125, tags: ["Спикер / лектор", "Эксперт"], title: "Онлайн-марафон FINVERSIA", desc: "Форум женщин-предпринимателей с Ириной Хакамадой", year: "2023", link: "https://bdm.ru/publicacii/onlain-marafon-finversia-proidet-7-10-iyunya-2023-goda-17899" },
-  { img: imgImage124, tags: ["Спикер / лектор", "Эксперт"], title: "Forbes Woman: Дао, бизнес и женщины", desc: "Форум женщин-предпринимателей с Ириной Хакамадой", year: "2023", link: "https://forbes.kz/articles/dao_biznes_i_jenschinyi" },
+  { img: experienceEvent12, tags: ["Спикер / лектор", "Эксперт"], title: "Онлайн-марафон FINVERSIA", desc: "Форум женщин-предпринимателей с Ириной Хакамадой", year: "2023", link: "https://bdm.ru/publicacii/onlain-marafon-finversia-proidet-7-10-iyunya-2023-goda-17899" },
+  { img: experienceEvent13, tags: ["Спикер / лектор", "Эксперт"], title: "Forbes Woman: Дао, бизнес и женщины", desc: "Форум женщин-предпринимателей с Ириной Хакамадой", year: "2023", link: "https://forbes.kz/articles/dao_biznes_i_jenschinyi" },
   // 2022
-  { img: imgImage123, tags: ["Спикер / лектор", "Эксперт"], title: "Онлайн-конференция ВТБ", desc: "«Фондовый рынок сегодня — кризис или новые возможности!»", year: "2022", link: "https://www.vtbreg.com/company/electronic-document/actions/Fond_rynok/?ysclid=mm98ut9u3d500758185" },
+  { img: experienceEvent14, tags: ["Спикер / лектор", "Эксперт"], title: "Онлайн-конференция ВТБ", desc: "«Фондовый рынок сегодня — кризис или новые возможности!»", year: "2022", link: "https://www.vtbreg.com/company/electronic-document/actions/Fond_rynok/?ysclid=mm98ut9u3d500758185" },
   // 2021
-  { img: imgImage136, tags: ["Интервью"], title: "Тимур Турлов — основатель группы Freedom Holding Corp", desc: "Про Фридом Финанс, Фонд первичных размещений и будущее рынков", year: "2021", link: "https://www.youtube.com/live/WLE52Ann_Pc?si=MlfBflIZOoWcBE2k" },
+  { img: experienceEvent15, tags: ["Интервью"], title: "Тимур Турлов — основатель группы Freedom Holding Corp", desc: "Про Фридом Финанс, Фонд первичных размещений и будущее рынков", year: "2021", link: "https://www.youtube.com/live/WLE52Ann_Pc?si=MlfBflIZOoWcBE2k" },
 ];
 
 const mediaProjects = [
-  { img: imgImage110, title: "«Распаковка с Кирой Юхтенко» на телеканале РБК", year: "2020", link: "https://t.me/centralbank_russia/2754" },
-  { img: imgImage111, title: "Ежедневная новостная рубрика на Business FM Казахстан", year: "2021 – 2024", link: "https://t.me/centralbank_russia/2754" },
-  { img: imgImage113, title: "Еженедельный подкаст «InvestFuture на Рекорде» на радио Record", year: "2021 – н.в.", link: "https://t.me/centralbank_russia/2754" },
+  { img: experienceRbk, title: "«Распаковка с Кирой Юхтенко» на телеканале РБК", year: "2020", link: "https://t.me/centralbank_russia/2754" },
+  { img: experienceBusinessFmBg, title: "Ежедневная новостная рубрика на Business FM Казахстан", year: "2021 – 2024", link: "https://t.me/centralbank_russia/2754" },
+  { img: experienceEvent03, title: "Еженедельный подкаст «InvestFuture на Рекорде» на радио Record", year: "2021 – н.в.", link: "https://t.me/centralbank_russia/2754" },
 ];
 
 function ExperienceSection() {
@@ -1153,7 +1172,7 @@ function ExperienceSection() {
 
   return (
     <section id="experience" className="bg-white py-16 overflow-hidden" ref={ref}>
-      <div className="px-6 lg:px-[150px]">
+      <div className="max-w-[1200px] mx-auto px-6 lg:px-[150px]">
         <motion.p
           className="text-[28px] leading-[1.15] text-[#111] text-center mb-14"
           style={{ fontFamily: F, fontWeight: 600 }}
@@ -1176,7 +1195,7 @@ function ExperienceSection() {
             {/* Фон — фото повёрнуто -90° */}
             <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
               <div className="-rotate-90 flex-none" style={{ width: 321, height: 180 }}>
-                <img src={imgImage110} alt="" className="w-full h-full object-cover pointer-events-none" style={{ opacity: 0.14 }} />
+                <img src={experienceRbk} alt="" width={673} height={1200} loading="lazy" className="w-full h-full object-cover pointer-events-none" style={{ opacity: 0.14 }} />
               </div>
             </div>
             <div className="absolute inset-0 bg-white mix-blend-hue" />
@@ -1207,12 +1226,12 @@ function ExperienceSection() {
           >
             {/* Фон — фото смещено вверх */}
             <div className="absolute inset-0 overflow-hidden">
-              <img src={imgImage111} alt="" className="absolute w-full object-cover pointer-events-none" style={{ height: 505, top: -325, left: 0 }} />
+              <img src={experienceBusinessFmBg} alt="" width={346} height={599} loading="lazy" className="absolute w-full object-cover pointer-events-none" style={{ height: 505, top: -325, left: 0 }} />
             </div>
             <div className="absolute inset-0 bg-white mix-blend-hue" />
             {/* Логотип Business FM */}
             <div className="absolute top-[12px] left-[14px]" style={{ width: "37.37%", aspectRatio: "1201/324" }}>
-              <img src={imgImagePhotoroom2} alt="Business FM" className="w-full h-auto object-contain" />
+              <img src={experienceBusinessFm} alt="Business FM" width={1280} height={415} loading="lazy" className="w-full h-auto object-contain" />
             </div>
             {/* Год */}
             <p className="absolute top-[14px] right-[14px] text-[#6c7179] text-[14px] leading-[1.25]" style={{ fontFamily: F, fontWeight: 500 }}>2021 – 2024</p>
@@ -1230,10 +1249,10 @@ function ExperienceSection() {
             transition={{ delay: 0.16 }} whileHover={{ scale: 1.02 }}
           >
             {/* Фон — тёмное фото */}
-            <img src={imgBCard1} alt="" className="absolute inset-0 w-full h-full object-cover pointer-events-none rounded-[16px]" />
+            <img src={experienceRadio} alt="" width={438} height={270} loading="lazy" className="absolute inset-0 w-full h-full object-cover pointer-events-none rounded-[16px]" />
             {/* Фото микрофона справа */}
             <div className="absolute right-0 top-0 w-[120px] h-[180px] overflow-hidden">
-              <img src={imgImagePhotoroom21} alt="" className="w-full h-full object-cover pointer-events-none scale-y-[-1] rotate-180" />
+              <img src={experienceRecordMic} alt="" width={640} height={960} loading="lazy" className="w-full h-full object-cover pointer-events-none scale-y-[-1] rotate-180" />
             </div>
             {/* Логотип RECORD */}
             <div className="absolute top-[14px] left-[14px]" style={{ width: 77, height: 24 }}>
@@ -1328,6 +1347,9 @@ function ExperienceSection() {
                   <img
                     src={card.img}
                     alt=""
+                    width={666}
+                    height={360}
+                    loading="lazy"
                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:scale-110"
                   />
                 )}
@@ -1568,7 +1590,7 @@ function CTASection() {
             {/* Avatar + name */}
             <div className="flex items-center gap-3">
               <div className="rounded-[8px] overflow-hidden shrink-0" style={{ width: 36, height: 36, background: "#7430f7" }}>
-                <img src={imgImage143} alt="Кира Юхтенко" className="w-full h-full object-cover" />
+                <img src={ctaAvatar} alt="Кира Юхтенко" width={640} height={640} loading="lazy" className="w-full h-full object-cover" />
               </div>
               <p className="text-[#111] text-[14px]" style={{ fontFamily: F, fontWeight: 600 }}>Кира Юхтенко</p>
             </div>
@@ -1609,7 +1631,7 @@ function CTASection() {
           <div className="hidden md:block relative" style={{ height: 350 }}>
             {/* Avatar */}
             <div className="absolute rounded-[8px] overflow-hidden" style={{ width: 36, height: 36, top: 20, left: 20, background: "#7430f7" }}>
-              <img src={imgImage143} alt="Кира Юхтенко" className="w-full h-full object-cover pointer-events-none" />
+              <img src={ctaAvatar} alt="Кира Юхтенко" width={640} height={640} loading="lazy" className="w-full h-full object-cover pointer-events-none" />
             </div>
             {/* Title */}
             <div className="absolute text-[#111]" style={{ top: 76, left: 20, fontSize: 20, fontWeight: 600, fontFamily: F, lineHeight: 1.15 }}>
@@ -1686,7 +1708,7 @@ export function LandingPage() {
   return (
     <div className="min-h-screen" style={{ fontFamily: F }}>
       <SiteHeader />
-      <main>
+      <main className="relative">
         <HeroSection />
         <AboutSection />
         <CareerSection />
