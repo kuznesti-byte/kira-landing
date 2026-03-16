@@ -51,6 +51,7 @@ import experienceEvent09 from "@assets/experience-event-09.webp";
 import experienceEvent10 from "@assets/experience-event-10.webp";
 import experienceEvent11 from "@assets/experience-event-11.webp";
 import experienceEvent07 from "@assets/experience-event-07.webp";
+import logoFooter from "@assets/Vector.svg"; // Обязательно проверь, чтобы путь совпадал с твоей папкой!
 
 /* ── shared ── */
 const F = "Manrope, sans-serif";
@@ -292,15 +293,15 @@ function HeroSection() {
         transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
       >
         <img
-        src={hero}
-        srcSet={`${hero768} 512w, ${hero1200} 800w, ${hero} 2733w`}
-        sizes="(max-width: 768px) 384px, 767px"
-        fetchpriority="high"
-        alt="Кира Юхтенко"
-        width={2733}
-        height={4096}
-        className="absolute inset-0 w-full h-full object-cover"
-      />
+          src={hero}
+          srcSet={`${hero768} 512w, ${hero1200} 800w, ${hero} 2733w`}
+          sizes="(max-width: 768px) 384px, 767px"
+          fetchpriority="high"
+          alt="Кира Юхтенко"
+          width={2733}
+          height={4096}
+          className="absolute inset-0 w-full h-full object-cover"
+        />
       </motion.div>
 
       {/* Bottom fade — блюр убран */}
@@ -632,43 +633,47 @@ function CareerSection() {
    AUDIENCE
 ════════════════════════════════════════════ */
 
-/* YouTube-карточка — золотая кнопка появляется при наведении */
-function YouTubeAudienceCard({ inView }: { inView: boolean }) {
+/* YouTube-карточка — золотая кнопка появляется при наведении или скролле */
+function YouTubeAudienceCard({ inView: sectionInView }: { inView: boolean }) {
+  const isMobile = useMobile();
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  // Отслеживаем скролл: срабатывает, когда карточка появляется на экране снизу (margin)
+  const cardInView = useInView(cardRef, { margin: "0px 0px -15% 0px", once: true });
   const [hovered, setHovered] = useState(false);
+
+  // Умная логика: на телефоне используем скролл (cardInView), на ПК - наведение (hovered)
+  const isActive = isMobile ? cardInView : hovered;
+
   return (
     <motion.div
+      ref={cardRef}
       className="bg-[#111] rounded-[12px] overflow-hidden relative h-[300px] cursor-pointer"
       initial={{ opacity: 0, y: 30 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
+      animate={sectionInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: 0 }}
       onHoverStart={() => setHovered(true)}
       onHoverEnd={() => setHovered(false)}
     >
       {/* ── Полный логотип YouTube (кнопка + текст) ── */}
       <div className="absolute top-[14px] left-[14px] h-[16px] w-[73px] overflow-hidden">
-        {/* Красный прямоугольник с треугольником */}
         <div className="absolute inset-y-0 left-0 right-[68.11%]">
           <svg className="absolute block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 23.3013 16">
             <path d={svgPaths.p22186700} fill="#FF0000" />
             <path d={svgPaths.p7289100} fill="white" />
           </svg>
         </div>
-        {/* Текст "YouTube" */}
         <div className="absolute inset-[3.93%_0.01%_6.17%_35.04%]">
           <svg className="absolute block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 47.459 14.384">
-            <path d={svgPaths.p74a3180} fill="#F7F7F7" />
-            <path d={svgPaths.p160d7100} fill="#F7F7F7" />
-            <path d={svgPaths.p34c1aff0} fill="#F7F7F7" />
-            <path d={svgPaths.p1f28ea00} fill="#F7F7F7" />
-            <path d={svgPaths.p11451240} fill="#F7F7F7" />
-            <path d={svgPaths.pc8f7a70} fill="#F7F7F7" />
-            <path d={svgPaths.p1d72a1f2} fill="#F7F7F7" />
+            <path d={svgPaths.p74a3180} fill="#F7F7F7" /><path d={svgPaths.p160d7100} fill="#F7F7F7" />
+            <path d={svgPaths.p34c1aff0} fill="#F7F7F7" /><path d={svgPaths.p1f28ea00} fill="#F7F7F7" />
+            <path d={svgPaths.p11451240} fill="#F7F7F7" /><path d={svgPaths.pc8f7a70} fill="#F7F7F7" /><path d={svgPaths.p1d72a1f2} fill="#F7F7F7" />
           </svg>
         </div>
       </div>
 
       <p className="absolute top-[62px] left-[14px] text-white text-[14px] leading-[1.25]" style={{ fontFamily: F, fontWeight: 500 }}>Канал InvestFuture</p>
-      <p className="absolute top-[84px] left-[14px] text-[#6c7179] text-[14px] leading-[1.25]" style={{ fontFamily: F, fontWeight: 500 }}>1 200 000+ подписчиков</p>
+      <p className="absolute top-[84px] left-[14px] text-[#6c7179] text-[14px] leading-[1.25]" style={{ fontFamily: F, fontWeight: 500 }}>1&nbsp;200&nbsp;000+ подписчиков</p>
 
       {/* Нижняя часть — фото + золотая кнопка */}
       <div className="absolute bottom-[14px] left-[14px] right-[14px]">
@@ -676,19 +681,15 @@ function YouTubeAudienceCard({ inView }: { inView: boolean }) {
 
           {/* Фоновое фото */}
           <motion.img
-            src={audience}
-            alt=""
-            width={2892}
-            height={3610}
-            className="absolute inset-0 w-full h-full object-cover pointer-events-none rounded-[12px]"
-            animate={{ opacity: hovered ? 0.10 : 0.30 }}
+            src={audience} alt="" width={2892} height={3610} className="absolute inset-0 w-full h-full object-cover pointer-events-none rounded-[12px]"
+            animate={{ opacity: isActive ? 0.10 : 0.30 }}
             transition={{ duration: 1.2 }}
           />
 
-          {/* Тёмный оверлей при hover */}
+          {/* Тёмный оверлей при активности */}
           <motion.div
             className="absolute inset-0 bg-black pointer-events-none rounded-[12px]"
-            animate={{ opacity: hovered ? 0.40 : 0 }}
+            animate={{ opacity: isActive ? 0.40 : 0 }}
             transition={{ duration: 0.4 }}
           />
 
@@ -697,24 +698,18 @@ function YouTubeAudienceCard({ inView }: { inView: boolean }) {
             <motion.div
               className="rotate-4"
               style={{ filter: "drop-shadow(0px 8px 24px rgba(0,0,0,0.55))" }}
-              animate={hovered
-                ? { opacity: 1, scale: 1, y: 0 }
-                : { opacity: 0, scale: 0.72, y: 36 }
-              }
-              transition={hovered
-                ? { type: "spring", stiffness: 320, damping: 22 }
-                : { duration: 0.6, ease: "easeOut" }
-              }
+              animate={isActive ? { opacity: 1, scale: 1, y: 0 } : { opacity: 0, scale: 0.72, y: 36 }}
+              transition={isActive ? { type: "spring", stiffness: 320, damping: 22 } : { duration: 0.6, ease: "easeOut" }}
             >
               <img src={audienceYoutubeBadge} alt="YouTube Gold Button" width={3048} height={3514} loading="lazy" className="w-[113px] h-[130px] object-cover" />
             </motion.div>
           </div>
 
-          {/* Подсказка — заметная с градиентом, исчезает при hover */}
+          {/* Подсказка — ДОБАВЛЕН hidden md:flex ЧТОБЫ СКРЫВАТЬ НА ТЕЛЕФОНАХ */}
           <motion.div
-            className="absolute bottom-0 left-0 right-0 flex items-center justify-center gap-1.5 pt-5 pb-2.5 pointer-events-none select-none rounded-b-[12px]"
+            className="absolute bottom-0 left-0 right-0 hidden md:flex items-center justify-center gap-1.5 pt-5 pb-2.5 pointer-events-none select-none rounded-b-[12px]"
             style={{ background: "linear-gradient(to top, rgba(0,0,0,0.78) 0%, transparent 100%)" }}
-            animate={{ opacity: hovered ? 0 : 1 }}
+            animate={{ opacity: isActive ? 0 : 1 }}
             transition={{ duration: 0.2 }}
           >
             <svg className="w-3 h-3 shrink-0" fill="none" viewBox="0 0 16 16">
@@ -733,6 +728,7 @@ function YouTubeAudienceCard({ inView }: { inView: boolean }) {
 
 function AudienceSection() {
   const { ref, inView } = useInViewOnce();
+  const isMobile = useMobile(); // Добавили хук для проверки телефона
   const avatars = [imgEllipse2, imgEllipse3, imgEllipse4, imgEllipse5, imgEllipse6, imgEllipse7, imgEllipse8, imgEllipse9, imgEllipse10];
 
   return (
@@ -745,10 +741,10 @@ function AudienceSection() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          Аудитория и охват
+          Аудитория и&nbsp;охват
         </motion.p>
         <div className="grid grid-cols-1 md:grid-cols-[241px_241px_241px] gap-5">
-          {/* YouTube card — hover-эффект вынесен в YouTubeAudienceCard */}
+
           <YouTubeAudienceCard inView={inView} />
 
           {/* Telegram card (белая подложка) */}
@@ -757,7 +753,6 @@ function AudienceSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.1 }}
-          // Убрали whileHover отсюда, чтобы не мешал
           >
             <div className="absolute top-4 left-4 w-5 h-4">
               <svg className="block w-full h-full" fill="none" viewBox="0 0 20 16">
@@ -766,12 +761,15 @@ function AudienceSection() {
             </div>
             <p className="absolute top-4 left-10 text-[#111] text-[14px] leading-[1.25]" style={{ fontFamily: F, fontWeight: 500 }}>Telegram</p>
 
-            {/* Channel 1 — Telegram-сеть InvestFuture */}
+            {/* ── Channel 1 — Telegram-сеть InvestFuture ── */}
             <motion.a
-              href="https://t.me/investfuture"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group absolute top-[54px] left-2 right-2 bg-[#111] rounded-[8px] h-[115px] overflow-hidden block cursor-pointer"
+              href="https://t.me/investfuture" target="_blank" rel="noopener noreferrer"
+              className="absolute top-[54px] left-2 right-2 bg-[#111] rounded-[8px] h-[115px] overflow-hidden block cursor-pointer"
+              // Фреймер логика: наводим мышку на ПК ИЛИ скроллим до нужной точки на телефоне
+              initial="idle"
+              whileHover="active"
+              whileInView={isMobile ? "active" : undefined}
+              viewport={{ once: true, margin: "0px 0px -15% 0px" }}
             >
               <img src={audienceTelegramCard1} alt="" width={1600} height={814} loading="lazy" className="absolute inset-0 w-full h-full object-cover opacity-20" />
               <p className="absolute top-[14px] left-[14px] text-white text-[14px] leading-[1.25]" style={{ fontFamily: F, fontWeight: 500 }}>
@@ -780,38 +778,42 @@ function AudienceSection() {
 
               <div className="absolute left-[14px] bottom-[14px] h-[36px] overflow-hidden w-[calc(100%-60px)]">
                 <div className="relative h-full w-full">
-                  {/* ТЕКСТ: Изначально виден внизу (18px), на ховере уходит вверх (0) */}
-                  <p
-                    className="absolute text-white text-[14px] leading-[1.25] transition-all duration-300 transform translate-y-[18px] group-hover:translate-y-0"
+                  <motion.p
+                    variants={{ idle: { y: 18 }, active: { y: 0 } }}
+                    transition={{ duration: 0.3 }}
+                    className="absolute text-white text-[14px] leading-[1.25]"
                     style={{ fontFamily: F, fontWeight: 500 }}
                   >
-                    800 000+ подписчиков
-                  </p>
+                    800&nbsp;000+ подписчиков
+                  </motion.p>
 
-                  {/* КРУЖОЧКИ: Изначально под контейнером (36px), на ховере встают под текст (18px) */}
-                  <div className="absolute left-0 flex items-center h-[18px] transition-all duration-300 transform translate-y-[36px] opacity-0 group-hover:translate-y-[18px] group-hover:opacity-100">
+                  <motion.div
+                    variants={{ idle: { y: 36, opacity: 0 }, active: { y: 18, opacity: 1 } }}
+                    transition={{ duration: 0.3 }}
+                    className="absolute left-0 flex items-center h-[18px]"
+                  >
                     {avatars.map((av, i) => (
                       <div key={i} className="w-[14px] h-[14px] rounded-full overflow-hidden border border-[#111] -ml-1 first:ml-0" style={{ zIndex: avatars.length - i }}>
                         <img src={av} alt="" width={32} height={32} loading="lazy" className="w-full h-full object-cover" />
                       </div>
                     ))}
-                  </div>
+                  </motion.div>
                 </div>
               </div>
 
               <div className="absolute right-[14px] bottom-[14px] w-[20px] h-[7px]">
-                <svg className="block w-full h-full" fill="none" viewBox="0 0 21 7.364">
-                  <path d={svgPaths.p319f1400} fill="white" />
-                </svg>
+                <svg className="block w-full h-full" fill="none" viewBox="0 0 21 7.364"><path d={svgPaths.p319f1400} fill="white" /></svg>
               </div>
             </motion.a>
 
-            {/* Channel 2 — Личный блог */}
+            {/* ── Channel 2 — Личный блог ── */}
             <motion.a
-              href="https://t.me/kira_pronira"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group absolute top-[177px] left-2 right-2 bg-[#111] rounded-[8px] h-[115px] overflow-hidden block cursor-pointer"
+              href="https://t.me/kira_pronira" target="_blank" rel="noopener noreferrer"
+              className="absolute top-[177px] left-2 right-2 bg-[#111] rounded-[8px] h-[115px] overflow-hidden block cursor-pointer"
+              initial="idle"
+              whileHover="active"
+              whileInView={isMobile ? "active" : undefined}
+              viewport={{ once: true, margin: "0px 0px -15% 0px" }}
             >
               <img src={audienceTelegramCard2} alt="" width={1600} height={814} loading="lazy" className="absolute inset-0 w-full h-full object-cover opacity-20" />
               <p className="absolute top-[14px] left-[14px] text-white text-[14px] leading-[1.25]" style={{ fontFamily: F, fontWeight: 500 }}>
@@ -820,24 +822,28 @@ function AudienceSection() {
 
               <div className="absolute left-[14px] bottom-[14px] h-[36px] overflow-hidden w-[calc(100%-60px)]">
                 <div className="relative h-full w-full">
-                  <p
-                    className="absolute text-white text-[14px] leading-[1.25] transition-all duration-300 transform translate-y-[18px] group-hover:translate-y-0"
+                  <motion.p
+                    variants={{ idle: { y: 18 }, active: { y: 0 } }}
+                    transition={{ duration: 0.3 }}
+                    className="absolute text-white text-[14px] leading-[1.25]"
                     style={{ fontFamily: F, fontWeight: 500 }}
                   >
-                    70 000+ подписчиков
-                  </p>
-                  <div className="absolute left-0 flex items-center h-[18px] transition-all duration-300 transform translate-y-[36px] opacity-0 group-hover:translate-y-[18px] group-hover:opacity-100">
+                    70&nbsp;000+ подписчиков
+                  </motion.p>
+                  <motion.div
+                    variants={{ idle: { y: 36, opacity: 0 }, active: { y: 18, opacity: 1 } }}
+                    transition={{ duration: 0.3 }}
+                    className="absolute left-0 flex items-center h-[18px]"
+                  >
                     <div className="w-[14px] h-[14px] rounded-full overflow-hidden border border-[#111]">
                       <img src={audienceTelegramAvatar} alt="" width={640} height={640} loading="lazy" className="w-full h-full object-cover rounded-full" />
                     </div>
-                  </div>
+                  </motion.div>
                 </div>
               </div>
 
               <div className="absolute right-[14px] bottom-[14px] w-[20px] h-[7px]">
-                <svg className="block w-full h-full" fill="none" viewBox="0 0 21 7.364">
-                  <path d={svgPaths.p319f1400} fill="white" />
-                </svg>
+                <svg className="block w-full h-full" fill="none" viewBox="0 0 21 7.364"><path d={svgPaths.p319f1400} fill="white" /></svg>
               </div>
             </motion.a>
           </motion.div>
@@ -856,7 +862,7 @@ function AudienceSection() {
             <div className="w-[213px] bg-[#f7f7f7] rounded-[8px] px-3 py-3 flex items-center justify-between">
               <div>
                 <p className="text-[#111] text-[14px]" style={{ fontFamily: F, fontWeight: 500 }}>RuTube, VK, Дзен</p>
-                <p className="text-[#6c7179] text-[14px]" style={{ fontFamily: F, fontWeight: 500 }}>200 000 + подписчиков</p>
+                <p className="text-[#6c7179] text-[14px]" style={{ fontFamily: F, fontWeight: 500 }}>200&nbsp;000+ подписчиков</p>
               </div>
               <div className="flex -space-x-0.5">
                 {[imgEllipse12, imgEllipse13, imgEllipse14].map((av, i) => (
@@ -894,6 +900,7 @@ const ALL_AWARD_YEARS = [
       { name: "Премия Investment Leaders Award 2025", nom: "«Интервью года»" },
     ],
   },
+  // 4 more shown before button
   {
     year: "2024",
     awards: [
@@ -907,28 +914,6 @@ const ALL_AWARD_YEARS = [
       { name: "Премия Investment Leaders Award 2023", nom: "«YouTube-канал года»" },
       { name: "Премия «Рублевая зона»", nom: "«Лучший телеграм пост»" },
       { name: "Премия «Рублевая зона»", nom: "«Лучший Ютуб канал»" },
-    ],
-  },
-  // 4 more shown before button
-  {
-    year: "2022",
-    awards: [
-      { name: "Премия Investment Leaders Award 2022", nom: "«Финансовый просветитель года»" },
-      { name: "Рейтинг Forbes «Лучшие финансовые блоги»", nom: "Топ-10 финансовых инфлюенсеров России" },
-    ],
-  },
-  {
-    year: "2021",
-    awards: [
-      { name: "Медиапремия РБК", nom: "«Лучший финансово-аналитический YouTube-канал»" },
-      { name: "Рейтинг личных финансов Banki.ru", nom: "«Лучший автор кон��ента о частных инвестициях»" },
-    ],
-  },
-  {
-    year: "2020",
-    awards: [
-      { name: "Forbes Russia", nom: "Топ-20 финансовых инфлюенсеров по версии Forbes" },
-      { name: "Премия «Финансовый Олимп»", nom: "«Лучший медиапроект в сфере инвестиций»" },
     ],
   },
 ];
@@ -1004,7 +989,8 @@ function AwardsSection() {
 
   return (
     <section id="awards" className="bg-[#f7f7f7] pt-10 pb-16 overflow-x-clip" ref={ref}>
-      <div className="max-w-[1200px] mx-auto px-[226px]">
+      {/* 1. Возвращаем центрирование (max-w) и делаем адаптивные отступы (px-6 для мобилки) */}
+      <div className="max-w-[1200px] mx-auto px-6 lg:px-[226px]">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -1016,7 +1002,7 @@ function AwardsSection() {
           </p>
         </motion.div>
 
-        {/* Marquee */}
+        {/* Marquee (Бегущая строка) — 2. Возвращаем твои картинки awardsMarquee */}
         <div className="overflow-hidden mb-10 relative h-[60px] flex items-center">
           <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-[#f7f7f7] to-transparent z-10 pointer-events-none" />
           <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-[#f7f7f7] to-transparent z-10 pointer-events-none" />
@@ -1035,21 +1021,26 @@ function AwardsSection() {
           </motion.div>
         </div>
 
+        {/* 3. Адаптивная сетка: 1 колонка на телефоне, 2 на десктопе */}
         <div className="grid grid-cols-1 lg:grid-cols-[292px_1fr] gap-10 items-start">
 
-          {/* ── Left: single-column media cards ── */}
-          <div className="flex flex-col gap-3 lg:sticky lg:top-24 lg:self-start">
+          {/* ── Left: Media cards (Скролл на мобилке, колонка на ПК) ── */}
+          <div
+            className="flex overflow-x-auto lg:flex-col gap-3 lg:sticky lg:top-24 lg:self-start pb-4 lg:pb-0 ios-scroll"
+            style={{ WebkitOverflowScrolling: "touch" }}
+          >
             {mediaCards.map((card, i) => (
               <motion.div
                 key={i}
-                className="group rounded-[12px] overflow-hidden relative shrink-0"
+                className="group rounded-[12px] overflow-hidden relative shrink-0 w-[280px] lg:w-auto" // Фиксируем ширину для мобильной карусели
                 style={{ height: card.height }}
                 initial={{ opacity: 0, x: -24 }}
                 animate={inView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.1 + i * 0.09, ease: [0.22, 1, 0.36, 1] }}
               >
                 <img src={card.img} alt="" width={666} height={360} loading="lazy" className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110" />
-                <div className="absolute inset-0 bg-gradient-to-b from-black/10 to-black/80" />
+                <div className="absolute inset-0 bg-black/40" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/95 to-transparent" />
                 <div className="absolute top-[14px] left-[14px]">{card.logo}</div>
                 <div className="absolute top-[14px] right-[14px] w-3 h-3">
                   <svg className="block w-full h-full" fill="none" viewBox="0 0 13.1096 13.1096">
@@ -1066,7 +1057,7 @@ function AwardsSection() {
             ))}
           </div>
 
-          {/* ── Right: Awards list with animated load-more ── */}
+          {/* ── Right: Awards list ── */}
           <motion.div
             className="flex flex-col gap-5"
             initial={{ opacity: 0, x: 24 }}
@@ -1123,7 +1114,6 @@ function AwardsSection() {
     </section>
   );
 }
-
 /* ══════════════════════════��═════════════════
    EXPERIENCE
 ════════════════════════════════════════════ */
@@ -1179,7 +1169,7 @@ function ExperienceSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
         >
-          Опыт выступлений и модерации
+          Опыт выступлений и&nbsp;модерации
         </motion.p>
 
         {/* Media project cards */}
@@ -1333,10 +1323,13 @@ function ExperienceSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <AnimatePresence mode="popLayout">
             {visibleCards.map((card: any, i: number) => (
-              <motion.div
+              <motion.a // 1. Изменили div на a (ссылку)
+                href={card.link} // 2. Указали путь из твоего массива
+                target="_blank" // 3. Чтобы открывалось в новой вкладке
+                rel="noopener noreferrer"
                 key={card.title + i}
                 layout
-                className="group bg-[#111] rounded-[16px] overflow-hidden relative h-[240px]"
+                className="group bg-[#111] rounded-[16px] overflow-hidden relative h-[240px] block cursor-pointer" // 4. Добавили cursor-pointer для появления "ручки" при наведении
                 style={{ WebkitMaskImage: "-webkit-radial-gradient(white, black)" }}
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -1353,7 +1346,7 @@ function ExperienceSection() {
                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:scale-110"
                   />
                 )}
-                <div className="absolute inset-0 bg-gradient-to-b from-[rgba(0,0,0,0.9)] to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/60" />
                 <div className="absolute inset-0 flex flex-col justify-between p-4">
                   <div className="flex items-start justify-between">
                     <p className="text-white text-[14px] leading-[1.25]" style={{ fontFamily: F, fontWeight: 400 }}>{card.desc}</p>
@@ -1368,7 +1361,7 @@ function ExperienceSection() {
                     <p className="text-white text-[24px] leading-[1.15]" style={{ fontFamily: F, fontWeight: 500 }}>{card.title}</p>
                   </div>
                 </div>
-              </motion.div>
+              </motion.a>
             ))}
           </AnimatePresence>
         </div>
@@ -1450,10 +1443,10 @@ function TopicsSection() {
             transition={{ duration: 0.6 }}
           >
             <p className="text-[28px] leading-[1.15] text-[#111] mb-[56px]" style={{ fontFamily: F, fontWeight: 600 }}>Темы выступлений</p>
-            <p className="text-[20px] leading-[1.25] text-[#111] mb-0" style={{ fontFamily: F, fontWeight: 500 }}>Lorem Ipsum is simply dummy text</p>
+            <p className="text-[20px] leading-[1.25] text-[#111] mb-0" style={{ fontFamily: F, fontWeight: 500 }}>Актуальная аналитика и&nbsp;рабочие стратегии</p>
             <p className="text-[20px] leading-[1.25] mb-10" style={{ fontFamily: F, fontWeight: 500 }}>
-              <span className="text-[#111]">of the printing </span>
-              <span className="text-[#6c7179]">and typesetting industry.</span>
+              <span className="text-[#111]">для сохранения </span>
+              <span className="text-[#6c7179]">и&nbsp;приумножения капитала.</span>
             </p>
             <motion.a
               href="#contact"
@@ -1574,7 +1567,7 @@ function CTASection() {
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.05 }}
           >
-            Пригласить Киру на мероприятие<br />или заказать модерацию
+            Пригласить Киру на&nbsp;мероприятие<br />или заказать модерацию
           </motion.p>
         </div>
 
@@ -1675,31 +1668,75 @@ function CTASection() {
 
 function SiteFooter() {
   const { ref, inView } = useInViewOnce("-20px");
+
+  // Массив ссылок, как в хедере
+  const navLinks = [
+    { label: "О спикере", href: "#about" },
+    { label: "Аудитория и охват", href: "#audience" },
+    { label: "Награды и рейтинги", href: "#awards" },
+    { label: "Темы выступлений", href: "#topics" },
+  ];
+
+  // Функция для плавного скролла
+  const handleScroll = (e: React.MouseEvent, href: string) => {
+    e.preventDefault();
+    const id = href.replace("#", "");
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
-    <footer className="bg-black relative overflow-hidden" style={{ height: 605 }} ref={ref}>
-      <motion.div
-        className="absolute inset-0"
-        initial={{ opacity: 0 }}
-        animate={inView ? { opacity: 1 } : {}}
-        transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-      >
-        <svg className="absolute block w-full h-full" fill="none" preserveAspectRatio="none" viewBox="0 0 1200 605">
-          <rect fill="black" height="605" width="1200" />
-          <g>
-            <path d={svgFooter.p28a6f500} fill="#111111" />
-            <path d={svgFooter.p121df00} fill="#111111" />
-            <path d={svgFooter.p23fe6700} fill="#111111" />
-            <path d={svgFooter.p2b4df200} fill="#111111" />
-            <path d={svgFooter.p233a2c80} fill="#111111" />
-            <path d={svgFooter.p2068b400} fill="#111111" />
-            <path d={svgFooter.p7fe1d30} fill="#111111" />
-            <path d={svgFooter.p3b79b000} fill="#111111" />
-            <path d={svgFooter.p266e1d80} fill="#111111" />
-            <path d={svgFooter.p6877880} fill="#111111" />
-            <path d={svgFooter.p339f5900} fill="#111111" />
-          </g>
-        </svg>
-      </motion.div>
+    <footer className="bg-[#111] pt-16 pb-8 overflow-hidden" ref={ref}>
+      <div className="max-w-[1200px] mx-auto px-6 lg:px-[150px] flex flex-col gap-12">
+
+        {/* Навигация — сдвинули влево (justify-start) */}
+        <motion.div
+          className="flex flex-col md:flex-row justify-start items-start gap-6"
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="flex flex-wrap justify-start gap-x-8 gap-y-4">
+            {navLinks.map((l) => (
+              <a
+                key={l.href}
+                href={l.href}
+                onClick={(e) => handleScroll(e, l.href)}
+                className="text-[#6c7179] hover:text-white transition-colors text-[14px]"
+                style={{ fontFamily: F, fontWeight: 500 }}
+              >
+                {l.label}
+              </a>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* SVG Логотип (Имя) — сдвинули влево и поменяли точку старта анимации */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95, transformOrigin: "left center" }}
+          animate={inView ? { opacity: 1, scale: 1 } : {}}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="w-full flex justify-start"
+        >
+          <img
+            src={logoFooter}
+            alt="Кира Юхтенко"
+            loading="lazy"
+            className="w-full h-auto max-w-[800px] invert opacity-90 hover:opacity-100 transition-opacity duration-300"
+          />
+        </motion.div>
+
+        {/* Копирайт — сдвинули влево (text-left) */}
+        <div
+          className="text-left text-[#6c7179] text-[12px] pt-6 border-t border-[#333]"
+          style={{ fontFamily: F, fontWeight: 400 }}
+        >
+          © {new Date().getFullYear()} Кира Юхтенко. Все права защищены.
+        </div>
+
+      </div>
     </footer>
   );
 }
