@@ -636,7 +636,7 @@ function CareerSection() {
 /* YouTube-карточка — золотая кнопка появляется при наведении или скролле */
 function YouTubeAudienceCard({ inView: sectionInView }: { inView: boolean }) {
   const isMobile = useMobile();
-  const cardRef = useRef<HTMLDivElement>(null);
+  const cardRef = useRef<HTMLAnchorElement>(null);
 
   // Отслеживаем скролл: срабатывает, когда карточка появляется на экране снизу (margin)
   const cardInView = useInView(cardRef, { margin: "0px 0px -15% 0px", once: true });
@@ -646,9 +646,12 @@ function YouTubeAudienceCard({ inView: sectionInView }: { inView: boolean }) {
   const isActive = isMobile ? cardInView : hovered;
 
   return (
-    <motion.div
+    <motion.a // Поменяли div на a
+      href="https://www.youtube.com/@InvestFutureRu" // Добавили твою ссылку
+      target="_blank" // Чтобы открывалось в новой вкладке
+      rel="noopener noreferrer"
       ref={cardRef}
-      className="bg-[#111] rounded-[12px] overflow-hidden relative h-[300px] cursor-pointer"
+      className="block bg-[#111] rounded-[12px] overflow-hidden relative h-[300px] cursor-pointer" // Добавили класс block
       initial={{ opacity: 0, y: 30 }}
       animate={sectionInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: 0 }}
@@ -722,7 +725,7 @@ function YouTubeAudienceCard({ inView: sectionInView }: { inView: boolean }) {
           </motion.div>
         </div>
       </div>
-    </motion.div>
+    </motion.a>
   );
 }
 
@@ -922,11 +925,13 @@ const ALL_AWARD_YEARS = [
 const mediaCards = [
   {
     img: awardsCard1, height: 145,
+    link: "https://www.forbes.ru/finansy-i-investicii/405821-russkiy-bloomberg-na-youtube-chto-smotret-v-internete-chastnomu",
     logo: <svg className="h-4 w-auto" fill="none" viewBox="0 0 63.699 16"><path d={svgPaths.p3800e900} fill="white" /></svg>,
     quote: "«Это очень взвешенный и всесторонний канал, который предлагает ежедневные выпуски, информацию и аналитику о фондовом рынке в самых разнообразных срезах»",
   },
   {
     img: awardsCard2, height: 153,
+    link: "https://www.rbc.ru/quote/news/article/5e8e09e89a79474204208d0f?ysclid=mlfa8k2bk7575938402",
     logo: (
       <svg className="h-4 w-auto" fill="none" viewBox="0 0 59.7143 16">
         <g><path clipRule="evenodd" d="M0 0V14.9333L14.9333 0H0Z" fill="#92CFAE" fillRule="evenodd" /><path clipRule="evenodd" d={svgPaths.pf8d0e00} fill="#2A8288" fillRule="evenodd" /></g>
@@ -948,6 +953,7 @@ const mediaCards = [
   },
   {
     img: awardsCard3, height: 100,
+    link: "https://bosfera.ru/bo/cheloveku-nuzhen-chelovek",
     logo: (
       <svg className="h-4 w-auto" fill="none" viewBox="0 0 34.4 16">
         <path d={svgPaths.p316cb600} fill="#BD1D1D" />
@@ -970,6 +976,7 @@ const mediaCards = [
   },
   {
     img: awardsCard4, height: 119,
+    link: "https://thecity.m24.ru/amp/articles/6279",
     logo: (
       <svg className="h-5 w-auto" fill="none" viewBox="0 0 44 20">
         <path d={svgPaths.p1426ac80} fill="white" />
@@ -1030,9 +1037,12 @@ function AwardsSection() {
             style={{ WebkitOverflowScrolling: "touch" }}
           >
             {mediaCards.map((card, i) => (
-              <motion.div
+              <motion.a
                 key={i}
-                className="group rounded-[12px] overflow-hidden relative shrink-0 w-[280px] lg:w-auto" // Фиксируем ширину для мобильной карусели
+                href={card.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group rounded-[12px] overflow-hidden relative shrink-0 w-[280px] lg:w-auto block cursor-pointer" // Фиксируем ширину для мобильной карусели
                 style={{ height: card.height }}
                 initial={{ opacity: 0, x: -24 }}
                 animate={inView ? { opacity: 1, x: 0 } : {}}
@@ -1053,7 +1063,7 @@ function AwardsSection() {
                 >
                   {card.quote}
                 </div>
-              </motion.div>
+              </motion.a>
             ))}
           </div>
 
@@ -1177,7 +1187,10 @@ function ExperienceSection() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
 
           {/* ── Card 1: РБК ── */}
-          <motion.div
+          <motion.a
+            href="https://tv.rbc.ru/archive/uhtenko?ysclid=mlfg8b75vj812516666" // Добавили ссылку
+            target="_blank"
+            rel="noopener noreferrer"
             className="bg-[#f7f7f7] rounded-[16px] overflow-hidden relative h-[180px]"
             initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0 }} whileHover={{ scale: 1.02 }}
@@ -1210,10 +1223,13 @@ function ExperienceSection() {
               <p className="text-[#111] text-[14px] leading-[1.25]" style={{ fontFamily: F, fontWeight: 400 }}>«Распаковка с Кирой Юхтенко»</p>
               <p className="text-[#111] text-[14px] leading-[1.25]" style={{ fontFamily: F, fontWeight: 400 }}>на телеканале РБК</p>
             </div>
-          </motion.div>
+          </motion.a>
 
           {/* ── Card 2: Business FM ── */}
-          <motion.div
+          <motion.a
+            href="https://music.yandex.ru/album/9845695/track/87366483?ysclid=mlfgdw4dcc109304888" // Добавили ссылку
+            target="_blank"
+            rel="noopener noreferrer"
             className="bg-[#f7f7f7] rounded-[16px] overflow-hidden relative h-[180px]"
             initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.08 }} whileHover={{ scale: 1.02 }}
@@ -1234,10 +1250,13 @@ function ExperienceSection() {
               <p className="text-[#111] text-[14px] leading-[1.25]" style={{ fontFamily: F, fontWeight: 400 }}>Ежедневная новостная рубрика</p>
               <p className="text-[#111] text-[14px] leading-[1.25]" style={{ fontFamily: F, fontWeight: 400 }}>на Business FM Казахстан</p>
             </div>
-          </motion.div>
+          </motion.a>
 
           {/* ── Card 3: Radio Record (тёмная) ── */}
-          <motion.div
+          <motion.a
+            href="https://app-api.radiorecord.ru/podcast/42515?ysclid=mlfggpgg78148778664" // Добавили ссылку
+            target="_blank"
+            rel="noopener noreferrer"
             className="bg-[#111] rounded-[16px] overflow-hidden relative h-[180px]"
             initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.16 }} whileHover={{ scale: 1.02 }}
@@ -1271,7 +1290,7 @@ function ExperienceSection() {
               <p className="text-white text-[14px] leading-[1.25]" style={{ fontFamily: F, fontWeight: 400 }}>Еженедельный подкаст «InvestFuture</p>
               <p className="text-white text-[14px] leading-[1.25]" style={{ fontFamily: F, fontWeight: 400 }}>на Рекорде» на радио Record</p>
             </div>
-          </motion.div>
+          </motion.a>
 
         </div>
 
