@@ -1182,11 +1182,15 @@ function ExperienceSection() {
             initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0 }} whileHover={{ scale: 1.02 }}
           >
-            {/* Фон — фото повёрнуто -90° */}
-            <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
-              <div className="-rotate-90 flex-none" style={{ width: 321, height: 180 }}>
-                <img src={experienceRbk} alt="" width={673} height={1200} loading="lazy" className="w-full h-full object-cover pointer-events-none" style={{ opacity: 0.14 }} />
-              </div>
+            {/* Чистый фон: новая горизонтальная картинка без поворотов */}
+            <div className="absolute inset-0 overflow-hidden">
+              <img
+                src={experienceRbk}
+                alt=""
+                loading="lazy"
+                className="w-full h-full object-cover pointer-events-none"
+                style={{ opacity: 0.14 }}
+              />
             </div>
             <div className="absolute inset-0 bg-white mix-blend-hue" />
             {/* Логотип РБК (SVG) */}
@@ -1432,6 +1436,16 @@ function TopicsSection() {
   const { ref, inView } = useInViewOnce();
   const [openIdx, setOpenIdx] = useState<number | null>(null);
 
+  // 1. Добавляем функцию плавного скролла
+  const handleScroll = (e: React.MouseEvent, href: string) => {
+    e.preventDefault();
+    const id = href.replace("#", "");
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <section id="topics" className="bg-[#f7f7f7] pt-20 pb-16 overflow-hidden" ref={ref}>
       <div className="max-w-[1200px] mx-auto px-6 lg:px-[226px]">
@@ -1450,6 +1464,7 @@ function TopicsSection() {
             </p>
             <motion.a
               href="#contact"
+              onClick={(e) => handleScroll(e, "#contact")} // 2. Привязали скролл!
               className="inline-flex items-center bg-[#111] hover:bg-[#333] text-white text-[14px] px-9 py-4 rounded-[8px] transition-colors"
               style={{ fontFamily: F, fontWeight: 500 }}
               whileHover={{ scale: 1.03 }}
@@ -1724,7 +1739,7 @@ function SiteFooter() {
             src={logoFooter}
             alt="Кира Юхтенко"
             loading="lazy"
-            className="w-full h-auto max-w-[800px] invert opacity-90 hover:opacity-100 transition-opacity duration-300"
+            className="w-full h-auto max-w-[800px] invert opacity-30"
           />
         </motion.div>
 
