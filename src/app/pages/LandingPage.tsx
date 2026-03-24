@@ -40,6 +40,11 @@ import experienceEvent03 from "@assets/experience-event-03.webp";
 import experienceEvent05 from "@assets/experience-event-05.webp";
 import experienceEvent02 from "@assets/experience-event-02.webp";
 import experienceEvent06 from "@assets/experience-event-06.webp";
+import experienceEvent16 from "@assets/Frame 280.png";
+import experienceEvent17 from "@assets/New card 2025.png";
+import experienceEvent18 from "@assets/New card 2029.png";
+import experienceEvent19 from "@assets/New card 2027.png";
+import experienceEvent20 from "@assets/New card 2028.png";
 import experienceRecordMic from "@assets/experience-record-mic.webp";
 import ctaAvatar from "@assets/cta-avatar.webp";
 import experienceEvent15 from "@assets/experience-event-15.webp";
@@ -51,6 +56,7 @@ import experienceEvent09 from "@assets/experience-event-09.webp";
 import experienceEvent10 from "@assets/experience-event-10.webp";
 import experienceEvent11 from "@assets/experience-event-11.webp";
 import experienceEvent07 from "@assets/experience-event-07.webp";
+import audienceOtherBg from "@assets/audienceOtherBg.webp"; // Проверь путь к файлу!
 import logoFooter from "@assets/Vector.svg"; // Обязательно проверь, чтобы путь совпадал с твоей папкой!
 
 /* ── shared ── */
@@ -339,7 +345,7 @@ function AboutSection() {
   const bioItems = [
     ["Финансовый обозреватель и сооснователь", "медиапроекта InvestFuture."],
     ["Магистр корпоративных финансов", "Университета Paris-Dauphine."],
-    ["Экс-консультант Ernst&Young, специалист", "КИТ Финанс, FBS."],
+    ["Экс-консультант Ernst&Young, специалист", "КИТ Финанс."],
     ["Свободно владеет английским, французским", "и немецким языками."],
     ["Мастер спорта по синхронному плаванию."],
   ];
@@ -444,7 +450,7 @@ const careerCards: { year: string; side: "left" | "right"; lines: CareerSeg[][] 
     lines: [
       [{ t: "Работала в консалтинге (", c: "gray" }, { t: "Ernst&Young", c: "white" }, { t: "),", c: "gray" }],
       [{ t: "брокерских и дилерских компаниях", c: "gray" }],
-      [{ t: "(", c: "gray" }, { t: "КИТ Финанс, FBS", c: "white" }, { t: ")", c: "gray" }],
+      [{ t: "(", c: "gray" }, { t: "КИТ Финанс", c: "white" }, { t: ")", c: "gray" }],
     ],
   },
   {
@@ -483,8 +489,6 @@ function CareerCardItem({ card }: { card: typeof careerCards[0] }) {
       className="w-[304px] h-[139px] bg-[#111] rounded-[12px] relative shrink-0 overflow-hidden"
       initial={{ opacity: 0, x: xFrom, y: 28, scale: 0.88 }}
       animate={inView ? { opacity: 1, x: 0, y: 0, scale: 1 } : {}}
-      transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-      whileHover={{ scale: 1.03, boxShadow: "0 0 28px rgba(116,48,247,0.22)" }}
     >
       {/* Фиолетовый блик — плавно проявляется вместе с карточкой */}
       <motion.div
@@ -495,8 +499,8 @@ function CareerCardItem({ card }: { card: typeof careerCards[0] }) {
         style={{
           background:
             card.side === "left"
-              ? "radial-gradient(ellipse at 0% 100%, rgba(116,48,247,0.10) 0%, transparent 65%)"
-              : "radial-gradient(ellipse at 100% 100%, rgba(116,48,247,0.10) 0%, transparent 65%)",
+              ? "radial-gradient(ellipse at 0% 100%, rgba(17,17,17,0.10) 0%, transparent 65%)"
+              : "radial-gradient(ellipse at 100% 100%, rgba(17,17,17,0.10) 0%, transparent 65%)",
         }}
       />
 
@@ -533,8 +537,19 @@ function CareerCardItem({ card }: { card: typeof careerCards[0] }) {
 
 function CareerSection() {
   return (
-    <section id="career" className="bg-[#010101]">
-      <div className="max-w-[1200px] mx-auto py-20">
+    // 1. Добавили relative и overflow-hidden
+    <section id="career" className="bg-[#010101] relative">
+
+      {/* 2. Эффект шума (теперь через фоновую картинку-паттерн, чтобы не пропадал на десктопе) */}
+      <div
+        className="pointer-events-none absolute inset-0 z-0 opacity-[0.05]"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`
+        }}
+      />
+
+      {/* 3. Добавили relative z-10, чтобы контент был поверх шума */}
+      <div className="max-w-[1200px] mx-auto py-20 relative z-10">
 
         {/* ══ MOBILE ══ */}
         <div className="flex lg:hidden flex-col gap-8 px-6">
@@ -720,7 +735,7 @@ function YouTubeAudienceCard({ inView: sectionInView }: { inView: boolean }) {
               <path d="M8 5v3M8 10v.5" stroke="white" strokeWidth="1.3" strokeLinecap="round" />
             </svg>
             <span className="text-white text-[12px]" style={{ fontFamily: F, fontWeight: 500 }}>
-              наведи, чтобы увидеть награду
+              Наведи, чтобы увидеть награду
             </span>
           </motion.div>
         </div>
@@ -851,34 +866,49 @@ function AudienceSection() {
             </motion.a>
           </motion.div>
 
-          {/* Other platforms */}
+          {/* Other platforms (Внешняя белая подложка + внутренняя черная карточка) */}
           <motion.div
-            className="bg-white rounded-[12px] relative h-[300px] flex flex-col items-center justify-center gap-4"
+            className="bg-white rounded-[12px] overflow-hidden relative h-[300px]"
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            whileHover={{ scale: 1.02 }}
           >
-            <div className="w-[213px] bg-[#111] rounded-[8px] px-3 py-2">
-              <p className="text-white text-[14px]" style={{ fontFamily: F, fontWeight: 500 }}>Другие площадки</p>
+            {/* Верхняя часть: Иконка глобуса + заголовок */}
+            <div className="absolute top-4 left-4 w-5 h-5 flex items-center justify-center">
+              <svg className="block w-full h-full text-[#111]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+              </svg>
             </div>
-            <div className="w-[213px] bg-[#f7f7f7] rounded-[8px] px-3 py-3 flex items-center justify-between">
-              <div>
-                <p className="text-[#111] text-[14px]" style={{ fontFamily: F, fontWeight: 500 }}>RuTube, VK, Дзен</p>
-                <p className="text-[#6c7179] text-[14px]" style={{ fontFamily: F, fontWeight: 500 }}>200&nbsp;000+ подписчиков</p>
+            <p className="absolute top-[18px] left-[42px] text-[#111] text-[14px] leading-[1.25]" style={{ fontFamily: F, fontWeight: 500 }}>
+              Другие площадки
+            </p>
+
+            {/* Внутренняя черная карточка */}
+            <div
+              className="absolute top-[54px] left-2 right-2 bottom-2 bg-[#111] rounded-[8px] overflow-hidden flex flex-col justify-between"
+            >
+              {/* Фоновая картинка с логотипами */}
+              <img
+                src={audienceOtherBg}
+                alt="Фон с логотипами"
+                loading="lazy"
+                className="absolute inset-0 w-full h-full object-cover pointer-events-none opacity-80"
+              />
+
+              {/* Текст поверх фона сверху (RuTube, VK, Дзен) */}
+              <div className="relative z-10 pl-3.5 pt-3.5">
+                <p className="text-white text-[15px]" style={{ fontFamily: F, fontWeight: 500 }}>RuTube, VK, Дзен</p>
               </div>
-              <div className="flex -space-x-0.5">
-                {[imgEllipse12, imgEllipse13, imgEllipse14].map((av, i) => (
-                  <img key={i} src={av} alt="" width={32} height={32} loading="lazy" className="w-[14px] h-[14px] rounded-full" />
-                ))}
+
+              {/* Нижняя часть: Подписчики + аватарки */}
+              <div className="relative z-10 p-3.5 mt-auto">
+                <p className="text-white text-[15px] mb-2" style={{ fontFamily: F, fontWeight: 500 }}>200 000 + подписчиков</p>
+                <div className="flex -space-x-1.5">
+                  {[imgEllipse12, imgEllipse13, imgEllipse14].map((av, i) => (
+                    <img key={i} src={av} alt="" width={32} height={32} loading="lazy" className="w-[20px] h-[20px] rounded-full border-[1.5px] border-[#111]" />
+                  ))}
+                </div>
               </div>
-            </div>
-            <div className="w-[213px] bg-[#f7f7f7] rounded-[8px] px-3 py-3 flex items-center justify-between">
-              <div>
-                <p className="text-[#111] text-[14px]" style={{ fontFamily: F, fontWeight: 500 }}>IF EdTech</p>
-                <p className="text-[#6c7179] text-[14px]" style={{ fontFamily: F, fontWeight: 500 }}>10-ки тыс. пользователей</p>
-              </div>
-              <img src={imgEllipse11} alt="" width={32} height={32} loading="lazy" className="w-[14px] h-[14px] rounded-full" />
             </div>
           </motion.div>
         </div>
@@ -922,31 +952,31 @@ const ALL_AWARD_YEARS = [
   {
     year: "2022",
     awards: [
-      { 
-        name: "Премия ФИНКОР от Минфина РФ", 
-        nom: "«Радио и подкасты» по направлению «Экономика»" 
+      {
+        name: "Премия ФИНКОР от Минфина РФ",
+        nom: "«Радио и подкасты» по направлению «Экономика»"
       },
-      { 
-        name: "Вошли в топ 10 лучших каналов про инвестиции на YouTube по версии РБК" 
+      {
+        name: "Вошли в топ 10 лучших каналов про инвестиции на YouTube по версии РБК"
       }
     ]
   },
   {
     year: "2019",
     awards: [
-      { 
-        name: "Премия Private money", 
-        nom: "«Лучший ютуб канал в области личных финансов»" 
+      {
+        name: "Премия Private money",
+        nom: "«Лучший ютуб канал в области личных финансов»"
       },
-      { 
-        name: "Премия «Рублёвая зона»", 
-        nom: "«Лучший автор поста или серии постов в блогах»" 
+      {
+        name: "Премия «Рублёвая зона»",
+        nom: "«Лучший автор поста или серии постов в блогах»"
       },
-      { 
-        name: "Благодарственное письмо от Финансового университета при Правительстве Российской Федерации" 
+      {
+        name: "Благодарственное письмо от Финансового университета при Правительстве Российской Федерации"
       },
-      { 
-        name: "Благодарственное письмо от событийного агентства «Дирекция Всего»" 
+      {
+        name: "Благодарственное письмо от событийного агентства «Дирекция Всего»"
       }
     ]
   }
@@ -1005,18 +1035,6 @@ const mediaCards = [
     ),
     quote: "«Финансовый обозреватель и сооснователь медиапроекта InvestFuture Кира Юхтенко»",
   },
-  {
-    img: awardsCard4, height: 119,
-    link: "https://thecity.m24.ru/amp/articles/6279",
-    logo: (
-      <svg className="h-5 w-auto" fill="none" viewBox="0 0 44 20">
-        <path d={svgPaths.p1426ac80} fill="white" />
-        <path d={svgPaths.p2211da00} fill="white" />
-        <path d={svgPaths.p11154700} fill="white" />
-      </svg>
-    ),
-    quote: "«Эксперт по инвестициям Кира Юхтенко рассказала, какие отрасли наиболее выгодны для инвестирования»",
-  },
 ];
 
 function AwardsSection() {
@@ -1039,25 +1057,6 @@ function AwardsSection() {
             Награды<br />и рейтинги
           </p>
         </motion.div>
-
-        {/* Marquee (Бегущая строка) — 2. Возвращаем твои картинки awardsMarquee */}
-        <div className="overflow-hidden mb-10 relative h-[60px] flex items-center">
-          <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-[#f7f7f7] to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-[#f7f7f7] to-transparent z-10 pointer-events-none" />
-          <motion.div
-            className="flex gap-8 whitespace-nowrap"
-            animate={{ x: ["0%", "-50%"] }}
-            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          >
-            {[...Array(2)].map((_, rep) => (
-              <div key={rep} className="flex gap-8 shrink-0 items-center">
-                <img src={awardsMarquee} alt="" width={1434} height={113} loading="lazy" className="h-[35px] w-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300" />
-                <img src={awardsMarquee} alt="" width={1434} height={113} loading="lazy" className="h-[35px] w-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300" />
-                <img src={awardsMarquee} alt="" width={1434} height={113} loading="lazy" className="h-[35px] grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300" />
-              </div>
-            ))}
-          </motion.div>
-        </div>
 
         {/* 3. Адаптивная сетка: 1 колонка на телефоне, 2 на десктопе */}
         <div className="grid grid-cols-1 lg:grid-cols-[292px_1fr] gap-10 items-start">
@@ -1164,22 +1163,26 @@ const eventCards: { img: string | null; tags: string[]; title: string; desc: str
   // 2025
   { img: experienceEvent01, tags: ["Эксперт"], title: "Т-Двор, панельная сессия «Кто заплатит за нашу старость?»", desc: "Инвестиции в будущее: что мешает поверить в ПДС и как это меняется", year: "2025", link: "https://www.rbc.ru/quote/news/article/685ba97f9a794754c6c69308" },
   { img: experienceEvent02, tags: ["Эксперт"], title: "Подкаст Банка России «Кому принадлежит ЦБ?»", desc: "Гость подкаста Банка России с Владимиром Чистюхиным и Алексеем Антоновым", year: "2025", link: "https://t.me/centralbank_russia/2754" },
-  { img: experienceEvent03, tags: ["Спикер / лектор"], title: "РБК Инвест Weekend", desc: "Лекция «Почему мы теряем деньги в инвестициях и как этого избежать» с Женей Поповым", year: "2025", link: "https://investwknd.rbc.ru/speakers" },
+  { img: experienceEvent03, tags: ["Спикер / лектор"], title: "РБК Инвест Weekend", desc: "Лекция «Почему мы теряем деньги в инвестициях и как этого избежать»", year: "2025", link: "https://investwknd.rbc.ru/speakers" },
   { img: experienceEvent04, tags: ["Модерация"], title: "Онлайн-конференция с экспертами БКС", desc: "Онлайн-конференция брокера БКС по криптовалютному рынку", year: "2025", link: "https://vkvideo.ru/video-16289875_456240984?sh=4" },
   { img: experienceEvent05, tags: ["Спикер / лектор"], title: "«Территория будущего. Москва 2030»", desc: "Ликбез по инвестициям: как создать семейный капитал и поддержать экономику", year: "2025", link: "https://moscow2030.mos.ru/events/lektsiya_likbez_po_investitsiyam_kak_sozdat_semeynyy_kapital_i_podderzhat_ekonomiku/" },
   { img: experienceEvent06, tags: ["Интервью"], title: "Аиша Кубезова — руководитель брокерского бизнеса Сбера", desc: "Куда инвестирует руководитель брокерского бизнеса Сбера? Фондовый рынок 2025", year: "2025", link: "https://vk.com/video-183755267_456241602?ysclid=mlffupcm9m67950931" },
-  { img: null, tags: ["Спикер / лектор", "Эксперт"], title: "Форум Investment Leaders Award", desc: "Стратегия 2026: где инвестору искать доходность?", year: "2025", link: "" },
-  { img: experienceEvent07, tags: ["Интервью"], title: "Директор Департамента информационной безопасности Банка России Вадима Уварова", desc: "Новые способы мошенничества, как обезопасить себя и своих близких", year: "2025", link: "https://kalinuszn74.ru/allnews/intervyu-direktora-departamenta-informacionnoi-bezopasnosti-banka-rossii-vadima-uvarova-finansovomu-blogeru-kire-yuhtenko-shemy-telefonnyh-moshennikov-predstavlyayut-ugrozu-dazhe-dlya-finansovo-gramotnyh-lyudei?ysclid=mlffollf9n288615465" },
+  { img: experienceEvent16, tags: ["Спикер / лектор", "Эксперт"], title: "Форум Investment Leaders Award", desc: "Стратегия 2026: где инвестору искать доходность?", year: "2025", link: "" },
+  { img: experienceEvent07, tags: ["Интервью"], title: "Вадим Уваров — директор Департамента информационной безопасности Банка России", desc: "Новые способы мошенничества, как обезопасить себя и своих близких", year: "2025", link: "https://kalinuszn74.ru/allnews/intervyu-direktora-departamenta-informacionnoi-bezopasnosti-banka-rossii-vadima-uvarova-finansovomu-blogeru-kire-yuhtenko-shemy-telefonnyh-moshennikov-predstavlyayut-ugrozu-dazhe-dlya-finansovo-gramotnyh-lyudei?ysclid=mlffollf9n288615465" },
+  { img: experienceEvent17, tags: ["Спикер / лектор", "Эксперт"], title: "Дмитрием Пьянов — первый зампред ВТБ", desc: "Ставка, рекордные дивиденды, НДС и вклады", year: "2025", link: "https://www.youtube.com/watch?v=9y770JsWF1c" },
   // 2024
   { img: experienceEvent08, tags: ["Интервью"], title: "Сергей Хотимский — основатель Совкомбанка", desc: "IPO Совкомбанка, задаем вопросы инвесторов", year: "2024", link: "https://vk.com/video-183755267_456241602?ysclid=mlffupcm9m67950931" },
-  { img: experienceEvent09, tags: ["Интервью"], title: "Член Совета директоров Банка России Михаил Мамута", desc: "Кто потеряет деньги на бирже, почему мошенников не истребить и что с тестами для квалов", year: "2024", link: "https://www.youtube.com/watch?v=HkreSlKbQ3Q" },
+  { img: experienceEvent09, tags: ["Интервью"], title: "Михаил Мамута — член Совета директоров Банка России", desc: "Кто потеряет деньги на бирже, почему мошенников не истребить и что с тестами для квалов", year: "2024", link: "https://www.youtube.com/watch?v=HkreSlKbQ3Q" },
   { img: experienceEvent10, tags: ["Эксперт"], title: "Подкаст Сбера «Короче»: Инвестиции — это несложно!", desc: "Разбираем инвестиции: когда, как и во что лучше всего вкладывать деньги, чтобы они приумножались", year: "2024", link: "https://vk.com/video-22522055_456244643" },
   { img: experienceEvent11, tags: ["Спикер / лектор", "Эксперт"], title: "Форум Investment Leaders Award «Как обогнать инфляцию в 2025?»", desc: "Investment Leaders 2024: в ожидании массовых дефолтов в 2025 году", year: "2024", link: "https://www.finversia.ru/news/events/investment-leaders-2024-v-ozhidanii-massovykh-defoltov-v-2025-godu-147062?ysclid=mm997gnt6h800120279" },
   // 2023
-  { img: experienceEvent12, tags: ["Спикер / лектор", "Эксперт"], title: "Онлайн-марафон FINVERSIA", desc: "Форум женщин-предпринимателей с Ириной Хакамадой", year: "2023", link: "https://bdm.ru/publicacii/onlain-marafon-finversia-proidet-7-10-iyunya-2023-goda-17899" },
+  { img: experienceEvent12, tags: ["Спикер / лектор", "Эксперт"], title: "Онлайн-марафон FINVERSIA", desc: "Макроэкономика и частные инвестиции", year: "2023", link: "https://bdm.ru/publicacii/onlain-marafon-finversia-proidet-7-10-iyunya-2023-goda-17899" },
   { img: experienceEvent13, tags: ["Спикер / лектор", "Эксперт"], title: "Forbes Woman: Дао, бизнес и женщины", desc: "Форум женщин-предпринимателей с Ириной Хакамадой", year: "2023", link: "https://forbes.kz/articles/dao_biznes_i_jenschinyi" },
+  { img: experienceEvent18, tags: ["Интервью"], title: "Александр Аузан — декан факультета экономики МГУ", desc: "Где мы потеряли 70% ВВП? Как культура влияет на экономику?", year: "2023", link: "https://www.youtube.com/watch?v=yyzzMInRba8" },
   // 2022
   { img: experienceEvent14, tags: ["Спикер / лектор", "Эксперт"], title: "Онлайн-конференция ВТБ", desc: "«Фондовый рынок сегодня — кризис или новые возможности!»", year: "2022", link: "https://www.vtbreg.com/company/electronic-document/actions/Fond_rynok/?ysclid=mm98ut9u3d500758185" },
+  { img: experienceEvent19, tags: ["Интервью"], title: "Владимир Левченко —  биржевой обозреватель и аналитик", desc: "Будущее доллара, человечество в памперсахи трейдинг по звездам", year: "2022", link: "https://www.youtube.com/watch?v=IgTE7aPMcSw" },
+  { img: experienceEvent20, tags: ["Интервью"], title: "Василий Олейник — трейдер, инвестор и ведущий", desc: "Что происходит с акциями в России и в мире и как вести себя инвестору", year: "2022", link: "https://www.youtube.com/watch?v=h6NarJdoQqs" },
   // 2021
   { img: experienceEvent15, tags: ["Интервью"], title: "Тимур Турлов — основатель группы Freedom Holding Corp", desc: "Про Фридом Финанс, Фонд первичных размещений и будущее рынков", year: "2021", link: "https://www.youtube.com/live/WLE52Ann_Pc?si=MlfBflIZOoWcBE2k" },
 ];
@@ -1210,11 +1213,10 @@ function ExperienceSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
         >
-          Опыт выступлений и&nbsp;модерации
+          Авторские проекты в&nbsp;крупных СМИ
         </motion.p>
 
         {/* Media project cards */}
-        <p className="text-[#6c7179] text-[14px] mb-4" style={{ fontFamily: F, fontWeight: 500 }}>Проекты в крупных деловых СМИ</p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
 
           {/* ── Card 1: РБК ── */}
@@ -1308,10 +1310,10 @@ function ExperienceSection() {
               <div className="absolute bottom-0 left-0 right-0 flex items-end justify-between" style={{ height: 10 }}>
                 <svg style={{ width: 14, height: 10 }} fill="none" viewBox="0 0 14.1828 9.89319"><path d={svgNzzm.p27bef400} fill="white" /></svg>
                 <svg style={{ width: 14, height: 10 }} fill="none" viewBox="0 0 13.8407 9.89319"><path d={svgNzzm.p15bb3480} fill="white" /></svg>
+                <svg style={{ width: 14, height: 10 }} fill="none" viewBox="0 0 13.5877 9.88551"><path d={svgNzzm.p2f8a4a00} fill="white" /></svg>
                 <svg style={{ width: 14, height: 10 }} fill="none" viewBox="0 0 13.9856 9.88551"><path d={svgNzzm.p3f172800} fill="white" /></svg>
                 <svg style={{ width: 14, height: 10 }} fill="none" viewBox="0 0 14.1905 9.89319"><path d={svgNzzm.p3e183600} fill="white" /></svg>
                 <svg style={{ width: 14, height: 10 }} fill="none" viewBox="0 0 14.4482 9.89319"><path d={svgNzzm.p34b329e0} fill="white" /></svg>
-                <svg style={{ width: 14, height: 10 }} fill="none" viewBox="0 0 13.5877 9.88551"><path d={svgNzzm.p2f8a4a00} fill="white" /></svg>
               </div>
             </div>
             {/* Год */}
@@ -1325,53 +1327,14 @@ function ExperienceSection() {
 
         </div>
 
-        {/* Filter row */}
-        <div className="mb-6">
-          <p className="text-[#6c7179] text-[14px] mb-3" style={{ fontFamily: F, fontWeight: 500 }}>Архив выступлений</p>
-
-          {/* ── Встраиваем CSS прямо сюда для управления скроллом ── */}
-          <style>{`
-            /* Элегантный тонкий скроллбар (как на iOS) */
-            .ios-scroll::-webkit-scrollbar {
-              height: 4px; /* Толщина ползунка */
-            }
-            .ios-scroll::-webkit-scrollbar-track {
-              background: transparent; /* Прозрачный фон под ползунком */
-            }
-            .ios-scroll::-webkit-scrollbar-thumb {
-              background-color: #E5E7EB; /* Светло-серый цвет ползунка */
-              border-radius: 10px; /* Скругления */
-            }
-            .ios-scroll::-webkit-scrollbar-thumb:hover {
-              background-color: #D1D5DB; /* Чуть темнеет при наведении */
-            }
-
-            /* Класс-невидимка (если решишь спрятать ползунок вообще) */
-            .hide-scroll::-webkit-scrollbar {
-              display: none;
-            }
-            .hide-scroll {
-              -ms-overflow-style: none;
-              scrollbar-width: none;
-            }
-          `}</style>
-
-          {/* Возвращаем горизонтальный скролл и добавляем наш класс ios-scroll */}
-          <div className="flex gap-2 overflow-x-auto pb-2 ios-scroll" style={{ WebkitOverflowScrolling: "touch" }}>
-            {filterTabs.map((tab) => (
-              <motion.button
-                key={tab}
-                onClick={() => setActive(tab)}
-                className={`px-4 py-2.5 rounded-[8px] text-[14px] transition-all duration-200 whitespace-nowrap ${active === tab ? "bg-[#7430f7] text-white" : "bg-[#f7f7f7] text-[#111] hover:bg-[#eee]"}`}
-                style={{ fontFamily: F, fontWeight: 400 }}
-                whileHover={{ scale: 1.04 }}
-                whileTap={{ scale: 0.96 }}
-              >
-                {tab}
-              </motion.button>
-            ))}
-          </div>
-        </div>
+        <motion.p
+          className="text-[28px] leading-[1.15] text-[#111] text-center mt-20 mb-10"
+          style={{ fontFamily: F, fontWeight: 600 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+        >
+          Опыт выступлений и&nbsp;модерации
+        </motion.p>
 
         {/* Event cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -1507,10 +1470,10 @@ function TopicsSection() {
             transition={{ duration: 0.6 }}
           >
             <p className="text-[28px] leading-[1.15] text-[#111] mb-[56px]" style={{ fontFamily: F, fontWeight: 600 }}>Темы выступлений</p>
-            <p className="text-[20px] leading-[1.25] text-[#111] mb-0" style={{ fontFamily: F, fontWeight: 500 }}>Актуальная аналитика и&nbsp;рабочие стратегии</p>
+            <p className="text-[20px] leading-[1.25] text-[#6c7179] mb-0" style={{ fontFamily: F, fontWeight: 500 }}>Актуальная аналитика и&nbsp;рабочие стратегии</p>
             <p className="text-[20px] leading-[1.25] mb-10" style={{ fontFamily: F, fontWeight: 500 }}>
               <span className="text-[#111]">для сохранения </span>
-              <span className="text-[#6c7179]">и&nbsp;приумножения капитала.</span>
+              <span className="text-[#111]">и&nbsp;приумножения капитала.</span>
             </p>
             <motion.a
               href="#contact"
@@ -1596,13 +1559,6 @@ function ContactSocials() {
         </svg>
         <span style={{ fontSize: 12, fontWeight: 400, fontFamily: F, lineHeight: 1.4, whiteSpace: "nowrap", color: "#111" }}>InvestFuture</span>
       </a>
-      <a href="https://linkedin.com/in/kira-yukhtenko" target="_blank" rel="noopener noreferrer"
-        className="flex items-center gap-[6px] hover:opacity-60 transition-opacity duration-150">
-        <svg className="w-4 h-4 shrink-0" fill="none" viewBox="0 0 16 16">
-          <path d={svgPaths.p324e5e00} fill="#111" />
-        </svg>
-        <span style={{ fontSize: 12, fontWeight: 400, fontFamily: F, lineHeight: 1.4, whiteSpace: "nowrap", color: "#111" }}>LinkedIn</span>
-      </a>
     </div>
   );
 }
@@ -1668,7 +1624,7 @@ function CTASection() {
             {/* Telegram */}
             <div>
               <p className="text-[#6c7179] mb-3" style={{ fontSize: 13, fontWeight: 500, fontFamily: F, lineHeight: 1.4 }}>
-                Напишите нам напрямую в Telegram:
+                Напишите нам напрямую<br />в Telegram:
               </p>
               <motion.a
                 href="https://t.me/IF_adv" target="_blank" rel="noopener noreferrer"
@@ -1706,8 +1662,8 @@ function CTASection() {
               <ContactSocials />
             </div>
             {/* Telegram label */}
-            <p className="absolute text-[#6c7179]" style={{ top: 268, left: 20, fontSize: 14, fontWeight: 500, fontFamily: F, lineHeight: 1.25, whiteSpace: "nowrap" }}>
-              Напишите нам напрямую в Telegram:
+            <p className="absolute text-[#6c7179]" style={{ top: 254, left: 20, fontSize: 14, fontWeight: 500, fontFamily: F, lineHeight: 1.25 }}>
+              Напишите нам напрямую<br />в Telegram:
             </p>
             {/* Telegram button */}
             <motion.a
