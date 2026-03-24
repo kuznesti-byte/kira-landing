@@ -1061,18 +1061,29 @@ function AwardsSection() {
         {/* 3. Адаптивная сетка: 1 колонка на телефоне, 2 на десктопе */}
         <div className="grid grid-cols-1 lg:grid-cols-[292px_1fr] gap-10 items-start">
 
+          {/* Добавляем стиль для одинаковой высоты карточек на мобилках */}
+          <style>{`
+              @media (max-width: 1023px) {
+                .mobile-uniform-card {
+                  height: 160px !important;
+                }
+              }
+            `}</style>
+
           {/* ── Left: Media cards (Скролл на мобилке, колонка на ПК) ── */}
           <div
             className="flex overflow-x-auto lg:flex-col gap-3 lg:sticky lg:top-24 lg:self-start pb-4 lg:pb-0 ios-scroll"
             style={{ WebkitOverflowScrolling: "touch" }}
           >
+
             {mediaCards.map((card, i) => (
               <motion.a
                 key={i}
                 href={card.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group rounded-[12px] overflow-hidden relative shrink-0 w-[280px] lg:w-auto block cursor-pointer" // Фиксируем ширину для мобильной карусели
+                // Добавили класс mobile-uniform-card вот сюда:
+                className="group rounded-[12px] overflow-hidden relative shrink-0 w-[280px] lg:w-auto block cursor-pointer mobile-uniform-card"
                 style={{ height: card.height }}
                 initial={{ opacity: 0, x: -24 }}
                 animate={inView ? { opacity: 1, x: 0 } : {}}
