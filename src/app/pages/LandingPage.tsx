@@ -57,6 +57,7 @@ import experienceEvent10 from "@assets/experience-event-10.webp";
 import experienceEvent11 from "@assets/experience-event-11.webp";
 import experienceEvent07 from "@assets/experience-event-07.webp";
 import experienceEvent21 from "@assets/experience-event-21.webp";
+import experienceEvent22 from "@assets/experience-event-22.webp";
 import audienceOtherBg from "@assets/audienceOtherBg.webp"; // Проверь путь к файлу!
 import logoFooter from "@assets/Vector.svg"; // Обязательно проверь, чтобы путь совпадал с твоей папкой!
 
@@ -1173,7 +1174,9 @@ const filterTabs = ["Все", "Спикер / лектор", "Эксперт", "
 
 const eventCards: { img: string | null; tags: string[]; title: string; desc: string; year: string }[] = [
   //2026
-    { img: experienceEvent21, tags: ["Эксперт", "Спикер / лектор"], title: "ТОЛК 2026 — Интенсив Т-Банка по личным финансам", desc: "Как обогнать инфляцию и зарабатывать выше процентных ставок по вкладам", year: "2026", link: "https://kinescope.io/pYdYbVqAcDpUsooz31X1tT" },
+  { img: experienceEvent21, tags: ["Эксперт", "Спикер / лектор"], title: "ТОЛК 2026 — Интенсив Т-Банка по личным финансам", desc: "Как обогнать инфляцию и зарабатывать выше процентных ставок по вкладам", year: "2026", link: "https://kinescope.io/pYdYbVqAcDpUsooz31X1tT" },
+  { img: experienceEvent22, tags: ["Эксперт", "Спикер / лектор"], title: "Биржевой форум Московской биржи 2026", desc: "Биржевой рынок изменился. Пришло время обсудить это лично", year: "2026", link: "https://rutube.ru/video/e1193b7cfa0f5b0c0279ed4970f20914/?r=wd&p=_Igmhp4RQT2OaJ5MUkUO4w" },
+
   // 2025
   { img: experienceEvent01, tags: ["Эксперт"], title: "Т-Двор, панельная сессия «Кто заплатит за нашу старость?»", desc: "Инвестиции в будущее: что мешает поверить в ПДС и как это меняется", year: "2025", link: "https://www.rbc.ru/quote/news/article/685ba97f9a794754c6c69308" },
   { img: experienceEvent02, tags: ["Эксперт"], title: "Подкаст Банка России «Кому принадлежит ЦБ?»", desc: "Гость подкаста Банка России с Владимиром Чистюхиным и Алексеем Антоновым", year: "2025", link: "https://t.me/centralbank_russia/2754" },
